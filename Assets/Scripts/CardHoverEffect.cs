@@ -5,12 +5,9 @@ using UnityEngine.EventSystems;
 public class CardHoverEffect : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     [Header("Hover Settings")]
-    public float hoverRise = 30f;        // Kartın yukarı kalkma miktarı
-    public float hoverScale = 1.1f;      // Büyüme oranı
+    public float hoverRise = 150f;        // Kartın yukarı kalkma miktarı
+    public float hoverScale = 1.2f;      // Büyüme oranı
     public float animSpeed = 8f;         // Animasyon hızı
-
-    [Header("Glow")]
-    public GameObject glowObject;        // Kartın arkasındaki glow image
 
     private Vector3 originalPos;
     private Vector3 originalScale;
@@ -24,9 +21,6 @@ public class CardHoverEffect : MonoBehaviour, IPointerEnterHandler, IPointerExit
         originalScale = transform.localScale;
         targetPos = originalPos;
         targetScale = originalScale;
-
-        if (glowObject != null)
-            glowObject.SetActive(false);
     }
 
     void Update()
@@ -41,8 +35,6 @@ public class CardHoverEffect : MonoBehaviour, IPointerEnterHandler, IPointerExit
         targetPos = originalPos + new Vector3(0, hoverRise, 0);
         targetScale = originalScale * hoverScale;
 
-        if (glowObject != null)
-            glowObject.SetActive(true);
     }
 
     public void OnPointerExit(PointerEventData eventData)
@@ -50,8 +42,5 @@ public class CardHoverEffect : MonoBehaviour, IPointerEnterHandler, IPointerExit
         isHovered = false;
         targetPos = originalPos;
         targetScale = originalScale;
-
-        if (glowObject != null)
-            glowObject.SetActive(false);
     }
 }
