@@ -1,0 +1,74 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2179544630711901597
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 940167723596796191}
+  - component: {fileID: 6809195284746599663}
+  m_Layer: 0
+  m_Name: CardManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &940167723596796191
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2179544630711901597}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6809195284746599663
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2179544630711901597}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a599015a7020c7a4eba4b71823dff99c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CardManager
+  cardPrefab: {fileID: 4279261098171212103, guid: 6793b4c400562974ea8a1ce8a5911021, type: 3}
+  cardDeckTransform: {fileID: 0}
+  maxCardCount: 6
+  minCardCount: 3
+  allCards:
+  - {fileID: 11400000, guid: 5ce1899dbdac3a14e9ea3985a6903fc1, type: 2}
+  - {fileID: 11400000, guid: c8a070305e34ee646a5e6a64d3b13268, type: 2}
+  - {fileID: 11400000, guid: b7e14dbad1e10404391eb7cb8cff1571, type: 2}
+  - {fileID: 11400000, guid: 3545843d7e53b614ba002ec50494c0cb, type: 2}
+  - {fileID: 11400000, guid: 31156da394fdd474fac5bb093fbb4a63, type: 2}
+  - {fileID: 11400000, guid: 17dd24c0ffad7f047bc58ae8eac26733, type: 2}
+  - {fileID: 11400000, guid: 7b20c4aa46f6b504192da651144e8a0c, type: 2}
+  - {fileID: 11400000, guid: c61f3e57876f8914c8cd4ea587c4f802, type: 2}
+  - {fileID: 11400000, guid: f4d605a4866756b44b9da32e46c5661e, type: 2}
+  - {fileID: 11400000, guid: 0dd2f93b65cd4374d973d33df5f054a3, type: 2}
+  - {fileID: 11400000, guid: 67a6ed6ba71367b4ca5e1d66140dd061, type: 2}
+  - {fileID: 11400000, guid: 78e37528a3c6fa244ba4767d2f997a32, type: 2}
+  - {fileID: 11400000, guid: 859385af0d67c1f48a47af3ab80151bf, type: 2}
+  mandatoryCardIndexes: 09000000090000000a000000
+  cardDeckLocation: {x: 6.5, y: 0}
+  player1CardHolder: {fileID: 0}
+  player2CardHolder: {fileID: 0}
+  cardAnimationPeriod: 4
+  reachCenterPeriod: 1.3
+  cardSpacing: 2.56
+  startX: -6.5
+  p1YHeight: -4
+  p2YHeight: 4
