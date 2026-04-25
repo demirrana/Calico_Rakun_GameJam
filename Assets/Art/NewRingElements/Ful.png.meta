@@ -1,0 +1,1521 @@
+fileFormatVersion: 2
+guid: fe0a054c3ad4ee547ae3c4e70e0b8214
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 8135523903216396727
+    second: Ful_0
+  - first:
+      213: -4722852876135239413
+    second: Ful_1
+  - first:
+      213: 2919501141791358453
+    second: Ful_2
+  - first:
+      213: -3374750248293372526
+    second: Ful_3
+  - first:
+      213: -7614875716966738932
+    second: Ful_4
+  - first:
+      213: -7399397641063211553
+    second: Ful_5
+  - first:
+      213: 3147085240008644872
+    second: Ful_6
+  - first:
+      213: -867112535022178758
+    second: Ful_7
+  - first:
+      213: 2720876963035886927
+    second: Ful_8
+  - first:
+      213: 1049425939741105538
+    second: Ful_9
+  - first:
+      213: 2383156168984744414
+    second: Ful_10
+  - first:
+      213: -6951683260037545218
+    second: Ful_11
+  - first:
+      213: 8715271860975299692
+    second: Ful_12
+  - first:
+      213: 8595024077118407286
+    second: Ful_13
+  - first:
+      213: 8806657071961395487
+    second: Ful_14
+  - first:
+      213: -4765406786683272003
+    second: Ful_15
+  - first:
+      213: 5108819207375389199
+    second: Ful_16
+  - first:
+      213: -2982073223322789577
+    second: Ful_17
+  - first:
+      213: 6643102880882395197
+    second: Ful_18
+  - first:
+      213: -3351697875191718954
+    second: Ful_19
+  - first:
+      213: 9047188214580299705
+    second: Ful_20
+  - first:
+      213: -6153161756952162786
+    second: Ful_21
+  - first:
+      213: -6792678973789699254
+    second: Ful_22
+  - first:
+      213: -2166915488330492309
+    second: Ful_23
+  - first:
+      213: -7756708991673084704
+    second: Ful_24
+  - first:
+      213: 5858312786325844076
+    second: Ful_25
+  - first:
+      213: -3999741575831788782
+    second: Ful_26
+  - first:
+      213: 7665870447612134536
+    second: Ful_27
+  - first:
+      213: -6323632733068883661
+    second: Ful_28
+  - first:
+      213: 4250760605342741471
+    second: Ful_29
+  - first:
+      213: 5115484098848674683
+    second: Ful_30
+  - first:
+      213: -7413023770019362440
+    second: Ful_31
+  - first:
+      213: 2207600723603091939
+    second: Ful_32
+  - first:
+      213: 3807794667063499028
+    second: Ful_33
+  - first:
+      213: 6627002315557170792
+    second: Ful_34
+  - first:
+      213: 2413028240564507521
+    second: Ful_35
+  - first:
+      213: -5827628715132515589
+    second: Ful_36
+  - first:
+      213: 5794502474126810774
+    second: Ful_37
+  - first:
+      213: -8444593075684265125
+    second: Ful_38
+  - first:
+      213: 8601991489116736631
+    second: Ful_39
+  - first:
+      213: 9098485943294994379
+    second: Ful_40
+  - first:
+      213: -2183001103049427400
+    second: Ful_41
+  - first:
+      213: -4570527586820025442
+    second: Ful_42
+  - first:
+      213: -3751012808527507228
+    second: Ful_43
+  - first:
+      213: -14212874518466019
+    second: Ful_44
+  - first:
+      213: -4326349286527318497
+    second: Ful_45
+  - first:
+      213: 2187216247798640867
+    second: Ful_46
+  - first:
+      213: 3294956122812741391
+    second: Ful_47
+  - first:
+      213: -405631887834577517
+    second: Ful_48
+  - first:
+      213: 848101576859275613
+    second: Ful_49
+  - first:
+      213: 3571897175637621636
+    second: Ful_50
+  - first:
+      213: -8351658108422323915
+    second: Ful_51
+  - first:
+      213: -4806399224753847557
+    second: Ful_52
+  - first:
+      213: 1912943103446188161
+    second: Ful_53
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Ful_0
+      rect:
+        serializedVersion: 2
+        x: 459
+        y: 2122
+        width: 2161
+        height: 806
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7b9a9e8d2ef27e070800000000000000
+      internalID: 8135523903216396727
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ful_1
+      rect:
+        serializedVersion: 2
+        x: 1587
+        y: 2915
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b01f687f45e057eb0800000000000000
+      internalID: -4722852876135239413
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ful_2
+      rect:
+        serializedVersion: 2
+        x: 1598
+        y: 2920
+        width: 7
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5fd32ddf1d6248820800000000000000
+      internalID: 2919501141791358453
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ful_3
+      rect:
+        serializedVersion: 2
+        x: 1641
+        y: 2915
+        width: 9
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 29defc4878a7a21d0800000000000000
+      internalID: -3374750248293372526
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ful_4
+      rect:
+        serializedVersion: 2
+        x: 1650
+        y: 2913
+        width: 10
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c04137971e6825690800000000000000
+      internalID: -7614875716966738932
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ful_5
+      rect:
+        serializedVersion: 2
+        x: 433
+        y: 2689
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fdd50949c0f005990800000000000000
+      internalID: -7399397641063211553
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ful_6
+      rect:
+        serializedVersion: 2
+        x: 443
+        y: 2696
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 80917901a51bcab20800000000000000
+      internalID: 3147085240008644872
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ful_7
+      rect:
+        serializedVersion: 2
+        x: 421
+        y: 2649
+        width: 16
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a3ee6b95eb567f3f0800000000000000
+      internalID: -867112535022178758
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ful_8
+      rect:
+        serializedVersion: 2
+        x: 2546
+        y: 2629
+        width: 16
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f453c4b9e2f72c520800000000000000
+      internalID: 2720876963035886927
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ful_9
+      rect:
+        serializedVersion: 2
+        x: 2568
+        y: 2639
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 28d5954055f409e00800000000000000
+      internalID: 1049425939741105538
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ful_10
+      rect:
+        serializedVersion: 2
+        x: 414
+        y: 2630
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ed1dd90c8eba21120800000000000000
+      internalID: 2383156168984744414
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ful_11
+      rect:
+        serializedVersion: 2
+        x: 416
+        y: 2599
+        width: 13
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ef2ce6618e8a68f90800000000000000
+      internalID: -6951683260037545218
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ful_12
+      rect:
+        serializedVersion: 2
+        x: 434
+        y: 2607
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c6ce362059dd2f870800000000000000
+      internalID: 8715271860975299692
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ful_13
+      rect:
+        serializedVersion: 2
+        x: 2554
+        y: 2600
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 67282981cd8a74770800000000000000
+      internalID: 8595024077118407286
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ful_14
+      rect:
+        serializedVersion: 2
+        x: 457
+        y: 2598
+        width: 9
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f11d0f082f7873a70800000000000000
+      internalID: 8806657071961395487
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ful_15
+      rect:
+        serializedVersion: 2
+        x: 416
+        y: 2569
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: db4028596cfddddb0800000000000000
+      internalID: -4765406786683272003
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ful_16
+      rect:
+        serializedVersion: 2
+        x: 428
+        y: 2576
+        width: 9
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f028d4d500c26e640800000000000000
+      internalID: 5108819207375389199
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ful_17
+      rect:
+        serializedVersion: 2
+        x: 449
+        y: 2574
+        width: 16
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 73914adf33c8d96d0800000000000000
+      internalID: -2982073223322789577
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ful_18
+      rect:
+        serializedVersion: 2
+        x: 432
+        y: 2550
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d388e5d9fda013c50800000000000000
+      internalID: 6643102880882395197
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ful_19
+      rect:
+        serializedVersion: 2
+        x: 456
+        y: 2544
+        width: 13
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6db14c26a806c71d0800000000000000
+      internalID: -3351697875191718954
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ful_20
+      rect:
+        serializedVersion: 2
+        x: 434
+        y: 2520
+        width: 14
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9b7c8224fb11e8d70800000000000000
+      internalID: 9047188214580299705
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ful_21
+      rect:
+        serializedVersion: 2
+        x: 444
+        y: 2497
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e1e095f9bf39b9aa0800000000000000
+      internalID: -6153161756952162786
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ful_22
+      rect:
+        serializedVersion: 2
+        x: 449
+        y: 2503
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a430006667e8bb1a0800000000000000
+      internalID: -6792678973789699254
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ful_23
+      rect:
+        serializedVersion: 2
+        x: 453
+        y: 2477
+        width: 7
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b66d4cb18d19de1e0800000000000000
+      internalID: -2166915488330492309
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ful_24
+      rect:
+        serializedVersion: 2
+        x: 459
+        y: 2439
+        width: 8
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0e45f35d442aa5490800000000000000
+      internalID: -7756708991673084704
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ful_25
+      rect:
+        serializedVersion: 2
+        x: 642
+        y: 2093
+        width: 52
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c60b414c078ec4150800000000000000
+      internalID: 5858312786325844076
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ful_26
+      rect:
+        serializedVersion: 2
+        x: 665
+        y: 2118
+        width: 8
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2136f237a301e78c0800000000000000
+      internalID: -3999741575831788782
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ful_27
+      rect:
+        serializedVersion: 2
+        x: 677
+        y: 2118
+        width: 7
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 884061c7e84a26a60800000000000000
+      internalID: 7665870447612134536
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ful_28
+      rect:
+        serializedVersion: 2
+        x: 679
+        y: 1630
+        width: 1609
+        height: 584
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 33985678881fd38a0800000000000000
+      internalID: -6323632733068883661
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ful_29
+      rect:
+        serializedVersion: 2
+        x: 616
+        y: 2105
+        width: 11
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fd3bda2cf3cbdfa30800000000000000
+      internalID: 4250760605342741471
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ful_30
+      rect:
+        serializedVersion: 2
+        x: 638
+        y: 2102
+        width: 6
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b73d8065fa9ddf640800000000000000
+      internalID: 5115484098848674683
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ful_31
+      rect:
+        serializedVersion: 2
+        x: 620
+        y: 2093
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 87908743826af1990800000000000000
+      internalID: -7413023770019362440
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ful_32
+      rect:
+        serializedVersion: 2
+        x: 631
+        y: 2094
+        width: 6
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3e1f1486929f2ae10800000000000000
+      internalID: 2207600723603091939
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ful_33
+      rect:
+        serializedVersion: 2
+        x: 659
+        y: 2090
+        width: 11
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 41952fb331108d430800000000000000
+      internalID: 3807794667063499028
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ful_34
+      rect:
+        serializedVersion: 2
+        x: 831
+        y: 1625
+        width: 10
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 86ee970ae77d7fb50800000000000000
+      internalID: 6627002315557170792
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ful_35
+      rect:
+        serializedVersion: 2
+        x: 851
+        y: 1621
+        width: 16
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 18355d7666ccc7120800000000000000
+      internalID: 2413028240564507521
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ful_36
+      rect:
+        serializedVersion: 2
+        x: 871
+        y: 1630
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bfa09a74f8a102fa0800000000000000
+      internalID: -5827628715132515589
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ful_37
+      rect:
+        serializedVersion: 2
+        x: 879
+        y: 1165
+        width: 1225
+        height: 563
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 69e5374bc453a6050800000000000000
+      internalID: 5794502474126810774
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ful_38
+      rect:
+        serializedVersion: 2
+        x: 1132
+        y: 622
+        width: 789
+        height: 560
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b53bd1bc657ceca80800000000000000
+      internalID: -8444593075684265125
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ful_39
+      rect:
+        serializedVersion: 2
+        x: 1927
+        y: 1157
+        width: 11
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 77c8cbd1fa9606770800000000000000
+      internalID: 8601991489116736631
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ful_40
+      rect:
+        serializedVersion: 2
+        x: 1038
+        y: 1130
+        width: 24
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bc7abf372c0544e70800000000000000
+      internalID: 9098485943294994379
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ful_41
+      rect:
+        serializedVersion: 2
+        x: 1274
+        y: 598
+        width: 15
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 836f374101c64b1e0800000000000000
+      internalID: -2183001103049427400
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ful_42
+      rect:
+        serializedVersion: 2
+        x: 1275
+        y: 606
+        width: 13
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e93187f10693290c0800000000000000
+      internalID: -4570527586820025442
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ful_43
+      rect:
+        serializedVersion: 2
+        x: 1288
+        y: 598
+        width: 17
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4e017cf69b9b1fbc0800000000000000
+      internalID: -3751012808527507228
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ful_44
+      rect:
+        serializedVersion: 2
+        x: 1324
+        y: 100
+        width: 401
+        height: 524
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d12f61747718dcff0800000000000000
+      internalID: -14212874518466019
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ful_45
+      rect:
+        serializedVersion: 2
+        x: 1718
+        y: 576
+        width: 22
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f164642fe38b5f3c0800000000000000
+      internalID: -4326349286527318497
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ful_46
+      rect:
+        serializedVersion: 2
+        x: 1302
+        y: 542
+        width: 30
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3e03009c69d8a5e10800000000000000
+      internalID: 2187216247798640867
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ful_47
+      rect:
+        serializedVersion: 2
+        x: 1304
+        y: 531
+        width: 13
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f0770c2e2290abd20800000000000000
+      internalID: 3294956122812741391
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ful_48
+      rect:
+        serializedVersion: 2
+        x: 1309
+        y: 521
+        width: 7
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3958c0872f7ee5af0800000000000000
+      internalID: -405631887834577517
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ful_49
+      rect:
+        serializedVersion: 2
+        x: 1317
+        y: 499
+        width: 9
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d51552604ef05cb00800000000000000
+      internalID: 848101576859275613
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ful_50
+      rect:
+        serializedVersion: 2
+        x: 1327
+        y: 471
+        width: 19
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 48bf9187e8de19130800000000000000
+      internalID: 3571897175637621636
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ful_51
+      rect:
+        serializedVersion: 2
+        x: 1505
+        y: 88
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5310af90333f81c80800000000000000
+      internalID: -8351658108422323915
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ful_52
+      rect:
+        serializedVersion: 2
+        x: 1513
+        y: 91
+        width: 10
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bf285d7de5d3c4db0800000000000000
+      internalID: -4806399224753847557
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ful_53
+      rect:
+        serializedVersion: 2
+        x: 1505
+        y: 71
+        width: 15
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 180817c0e932c8a10800000000000000
+      internalID: 1912943103446188161
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Ful_0: 8135523903216396727
+      Ful_1: -4722852876135239413
+      Ful_10: 2383156168984744414
+      Ful_11: -6951683260037545218
+      Ful_12: 8715271860975299692
+      Ful_13: 8595024077118407286
+      Ful_14: 8806657071961395487
+      Ful_15: -4765406786683272003
+      Ful_16: 5108819207375389199
+      Ful_17: -2982073223322789577
+      Ful_18: 6643102880882395197
+      Ful_19: -3351697875191718954
+      Ful_2: 2919501141791358453
+      Ful_20: 9047188214580299705
+      Ful_21: -6153161756952162786
+      Ful_22: -6792678973789699254
+      Ful_23: -2166915488330492309
+      Ful_24: -7756708991673084704
+      Ful_25: 5858312786325844076
+      Ful_26: -3999741575831788782
+      Ful_27: 7665870447612134536
+      Ful_28: -6323632733068883661
+      Ful_29: 4250760605342741471
+      Ful_3: -3374750248293372526
+      Ful_30: 5115484098848674683
+      Ful_31: -7413023770019362440
+      Ful_32: 2207600723603091939
+      Ful_33: 3807794667063499028
+      Ful_34: 6627002315557170792
+      Ful_35: 2413028240564507521
+      Ful_36: -5827628715132515589
+      Ful_37: 5794502474126810774
+      Ful_38: -8444593075684265125
+      Ful_39: 8601991489116736631
+      Ful_4: -7614875716966738932
+      Ful_40: 9098485943294994379
+      Ful_41: -2183001103049427400
+      Ful_42: -4570527586820025442
+      Ful_43: -3751012808527507228
+      Ful_44: -14212874518466019
+      Ful_45: -4326349286527318497
+      Ful_46: 2187216247798640867
+      Ful_47: 3294956122812741391
+      Ful_48: -405631887834577517
+      Ful_49: 848101576859275613
+      Ful_5: -7399397641063211553
+      Ful_50: 3571897175637621636
+      Ful_51: -8351658108422323915
+      Ful_52: -4806399224753847557
+      Ful_53: 1912943103446188161
+      Ful_6: 3147085240008644872
+      Ful_7: -867112535022178758
+      Ful_8: 2720876963035886927
+      Ful_9: 1049425939741105538
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
