@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class CameraManager : MonoBehaviour
 {
@@ -16,6 +17,8 @@ public class CameraManager : MonoBehaviour
 
     private bool isPlayer1View = true;
 
+    public Button button1;
+    public Button button2;
     void Awake()
     {
         if (Instance == null) Instance = this;

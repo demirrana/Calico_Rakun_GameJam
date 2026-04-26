@@ -145,6 +145,8 @@ public class TurnManager : MonoBehaviour
             ChangeState(GameState.Player1_MovePhase);
             // Oyun başladığında kamerayı tekrar P1'e çevir
             if (CameraManager.Instance != null) CameraManager.Instance.SwitchTurnView(true);
+
+            CardManager.Instance.ToggleCardHoversOfPlayers();
         }
     }
 
