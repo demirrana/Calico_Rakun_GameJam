@@ -65,7 +65,7 @@ public class CardManager : MonoBehaviour
 
     private Card lastDrawnCard;
 
-    private bool isPlayer1sTurn = true; //gamemanager'a atılabilir
+    public bool isPlayer1sTurn = true; //gamemanager'a atılabilir
 
     private readonly string Trigger_SendToCenter = "SendToCenter";
 
@@ -305,4 +305,19 @@ public class CardManager : MonoBehaviour
             }
         }
     }
+    public void RemoveCard(Card card, bool isPlayer1)
+    {
+        if (isPlayer1)
+        {
+            player1Cards.Remove(card);
+            player1CardsData.Remove(card.GetCardData());
+        }
+        else
+        {
+            player2Cards.Remove(card);
+            player2CardsData.Remove(card.GetCardData());
+        }
+        Debug.Log($"[CardManager] Kart silindi: {card.GetCardData().cardType}. Kalan: {(isPlayer1 ? player1Cards.Count : player2Cards.Count)}");
+    }
+
 }

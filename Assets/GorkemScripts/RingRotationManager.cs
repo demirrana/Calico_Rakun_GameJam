@@ -9,6 +9,11 @@ public class RingRotationManager : MonoBehaviour
 
     public enum RotationState { Idle, SelectingRing, SelectingDirection, Animating }
 
+    // Yeni alanlar
+    private int lastRotatedRing = -1;
+    private int lastRotationDirection = 0;
+
+
     [Header("Durum")]
     public RotationState currentState = RotationState.Idle;
     public float angle = 90f;
@@ -19,10 +24,10 @@ public class RingRotationManager : MonoBehaviour
     public Button player2Button;
     public TMP_Text player2CooldownText;
 
-    [Header("Canvas Yˆn Oklar˝ (Sa/Sol)")]
-    [Tooltip("Canvas'a koyduunuz Sa Ok objesi")]
+    [Header("Canvas YÔøΩn OklarÔøΩ (SaÔøΩ/Sol)")]
+    [Tooltip("Canvas'a koyduÔøΩunuz SaÔøΩ Ok objesi")]
     public GameObject rightArrowUI;
-    [Tooltip("Canvas'a koyduunuz Sol Ok objesi")]
+    [Tooltip("Canvas'a koyduÔøΩunuz Sol Ok objesi")]
     public GameObject leftArrowUI;
 
     [Header("Ring Parent Objeleri")]
@@ -33,11 +38,28 @@ public class RingRotationManager : MonoBehaviour
     private int p1Cooldown = 0;
     private int p2Cooldown = 0;
 
-    // SeÁim Dei˛kenleri
+    // SeÔøΩim DeÔøΩiÔøΩkenleri
     private int selectedRing = 0;
     private int selectedDirection = 1; 
     private PlayerController activePlayer;
     private GameState lastGameState;
+
+    public bool HasLastRotation()
+    {
+        return lastRotatedRing >= 0;
+    }
+
+    public IEnumerator UndoLastRotation()
+    {
+        // Ters y√∂ne √ßevir
+        selectedRing = lastRotatedRing;
+        selectedDirection = -lastRotationDirection;
+        currentState = RotationState.Animating;
+
+        yield return StartCoroutine(RotateRingCoroutine());
+
+        lastRotatedRing = -1; // Resetle
+    }
 
     void Awake()
     {
@@ -204,6 +226,9 @@ public class RingRotationManager : MonoBehaviour
         ringTransform.rotation = targetRotation;
 
         ShiftLogicalArray(selectedRing, selectedDirection);
+        
+        lastRotatedRing = selectedRing;
+        lastRotationDirection = selectedDirection;
 
         currentState = RotationState.Idle;
         TurnManager.Instance.cardOrRingTurnPlayed = true;

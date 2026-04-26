@@ -1,22 +1,44 @@
 using UnityEngine;
 using System.Collections;
 using System;
+using System.Collections.Generic;
 
 public class PlayerController : MonoBehaviour
 {
     public string playerName;
 
-    [Header("Anlýk Konum")]
+    [Header("Anlï¿½k Konum")]
     public int currentRing;
     public int currentSlice;
 
-    [Header("Geçmiþ Konum (Mayýn Ýçin)")]
+    [Header("Geï¿½miï¿½ Konum (Mayï¿½n ï¿½ï¿½in)")]
     [HideInInspector] public int previousRing;
     [HideInInspector] public int previousSlice;
 
-    [Header("Hareket Ayarlarý")]
+    [Header("Hareket Ayarlarï¿½")]
     public float moveSpeed = 5f;
     private bool isMoving = false;
+
+    [Header("Kart Efektleri")]
+    [HideInInspector] public bool skipNextMove = false;
+    [HideInInspector] public bool cardBlocked = false;
+    [HideInInspector] public int extraSteps = 0;
+
+    // Pozisyon geÃ§miÅŸi (Kart 8 iÃ§in)
+    private List<Vector2Int> positionHistory = new List<Vector2Int>();
+
+    // Mevcut MoveTo metodunun iÃ§inde, hareket baÅŸlamadan Ã–NCE ekle:
+    // positionHistory.Add(new Vector2Int(currentRing, currentSlice));
+
+    public Vector2Int GetPositionNMovesAgo(int n)
+    {
+        if (positionHistory.Count >= n)
+            return positionHistory[positionHistory.Count - n];
+        else if (positionHistory.Count > 0)
+            return positionHistory[0];
+        else
+            return new Vector2Int(currentRing, currentSlice);
+    }
 
     public void SetPositionImmediate(int ring, int slice, Transform targetPos)
     {
@@ -32,6 +54,7 @@ public class PlayerController : MonoBehaviour
         {
             previousRing = currentRing;
             previousSlice = currentSlice;
+            positionHistory.Add(new Vector2Int(currentRing, currentSlice));  // BU SATIR
 
             StartCoroutine(MoveCoroutine(targetRing, targetSlice, targetPos, onMovementComplete));
         }
