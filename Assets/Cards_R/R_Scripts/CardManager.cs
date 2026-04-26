@@ -70,6 +70,8 @@ public class CardManager : MonoBehaviour
 
     public bool isPlayer1sTurn = true;
 
+    private bool isStartOfGame = true;
+
     private readonly string Trigger_SendToCenter = "SendToCenter";
 
     public void RaiseCardChosen(object sender, Card card)
@@ -100,17 +102,15 @@ public class CardManager : MonoBehaviour
     private IEnumerator SetupGameRoutine()
     {
         yield return StartCoroutine(DealInitialCards(player1Cards, player1CardsData, mandatoryCardIndexes.Count));
-        SetPlayer1HoverRise();
+        ToggleCardHoverOfPlayer(player1Cards);
         isPlayer1sTurn = false;
         yield return StartCoroutine(DealInitialCards(player2Cards, player2CardsData, mandatoryCardIndexes.Count));
+        ToggleCardHoverOfPlayer(player2Cards);
         DeleteMandatoryCards(); //some cards are given to player only at start, so delete them for random card deal
         isPlayer1sTurn = true;
+        isStartOfGame = false;
         turnManagerObj.SetActive(true);
         ringRotationObj.SetActive(true);
-        //Debug.Log("player 1 cards data:\n");
-        //LogList(player1CardsData);
-        //Debug.Log("player 1 cards: \n");
-        //LogList(player1Cards);
     }
 
     private void SetPlayer1HoverRise()
@@ -167,13 +167,11 @@ public class CardManager : MonoBehaviour
         foreach (Card card in player1Cards)
         {
             CardHover cardHover = card.GetComponent<CardHover>();
-            Debug.Log("for player 1 card:" + cardHover.hoverRise);
             cardHover.ChangeHoverRise();
         }
         foreach (Card card in player2Cards)
         {
             CardHover cardHover = card.GetComponent<CardHover>();
-            Debug.Log("for player 2 card:" + cardHover.hoverRise);
             cardHover.ChangeHoverRise();
         }
     }
@@ -347,4 +345,18 @@ public class CardManager : MonoBehaviour
         Debug.Log($"[CardManager] Kart silindi: {card.GetCardData().cardType}. Kalan: {(isPlayer1 ? player1Cards.Count : player2Cards.Count)}");
     }
 
+    public void ToggleCardHoversOfPlayers()
+    {
+        ToggleCardHoverOfPlayer(player1Cards);
+        ToggleCardHoverOfPlayer(player2Cards);
+    }
+
+    private void ToggleCardHoverOfPlayer(List<Card> playerCards)
+    {
+        foreach (Card card in playerCards)
+        {
+            CardHover cardHover = card.GetComponent<CardHover>();
+            cardHover.enabled = !cardHover.enabled;
+        }
+    }
 }
