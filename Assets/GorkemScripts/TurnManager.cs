@@ -125,6 +125,10 @@ public class TurnManager : MonoBehaviour
         TileData selectedTile = GridManager.Instance.GetTile(cursorRing, cursorSlice);
         activePlayer.SetPositionImmediate(cursorRing, cursorSlice, selectedTile.tileTransform);
 
+        // Başlangıç karesini boya
+        bool isP1 = (currentState == GameState.Setup_Player1);
+        GridManager.Instance.PaintTile(cursorRing, cursorSlice, isP1);
+        
         if (currentState == GameState.Setup_Player1)
         {
             ChangeState(GameState.Setup_Player2);

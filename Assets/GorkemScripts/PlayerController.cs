@@ -78,6 +78,10 @@ public class PlayerController : MonoBehaviour
         currentSlice = targetSlice;
         isMoving = false;
 
+        // Bastığı kareyi boya
+        bool isP1 = (this == TurnManager.Instance.player1);
+        GridManager.Instance.PaintTile(currentRing, currentSlice, isP1);
+
         onMovementComplete?.Invoke();
     }
 }

@@ -856,9 +856,30 @@ MonoBehaviour:
   - name: Main Menu Music
     clip: {fileID: 8300000, guid: d41fb4f3ee9974e40befaa6a57dfee10, type: 3}
     volume: 0.5
+  - name: Game Music
+    clip: {fileID: 8300000, guid: efb46de1620f91d4c811bb1b440c99c8, type: 3}
+    volume: 1
   oneShotSfxSounds:
   - name: Meow
     clip: {fileID: 8300000, guid: 9d4a4bcf6295db24eacc9d2ebb55c77f, type: 3}
+    volume: 1
+  - name: Altin
+    clip: {fileID: 8300000, guid: afcafa2cf0049214ebff5163679a00f4, type: 3}
+    volume: 1
+  - name: Bomb
+    clip: {fileID: 8300000, guid: 68de2fd39fc88ca4b860d7bf54748d9b, type: 3}
+    volume: 1
+  - name: Chain
+    clip: {fileID: 8300000, guid: 71d610c4fa7564449a5de433b74d3e7f, type: 3}
+    volume: 1
+  - name: Flame
+    clip: {fileID: 8300000, guid: e2c34a0776e51f443bb6af8bfa2e5f63, type: 3}
+    volume: 1
+  - name: Stone
+    clip: {fileID: 8300000, guid: b02bb658f86eb0c44ac6dd574c355786, type: 3}
+    volume: 1
+  - name: StoneClick
+    clip: {fileID: 8300000, guid: 8cdbc02fd2d979f4297d59b091e583b5, type: 3}
     volume: 1
   loopedSfxSounds: []
   musicFadeDuration: 0.5

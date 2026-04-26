@@ -193,6 +193,7 @@ public class RingRotationManager : MonoBehaviour
 
     private void UpdateDirectionUI()
     {
+        AudioManager.Instance.PlayOneShotSFX("StoneClick");
         rightArrowUI.SetActive(selectedDirection == 1);
         leftArrowUI.SetActive(selectedDirection == -1);
     }
@@ -211,6 +212,7 @@ public class RingRotationManager : MonoBehaviour
 
     private IEnumerator RotateRingCoroutine()
     {
+        AudioManager.Instance.PlayOneShotSFX("Stone");
         Transform ringTransform = ringParents[selectedRing];
 
         float targetAngle = selectedDirection == 1 ? -angle : angle;

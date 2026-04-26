@@ -44,6 +44,7 @@ public class CardEffectManager : MonoBehaviour
 
         if (owner.cardBlocked)
         {
+            
             Debug.Log($"<color=red>{owner.playerName} bu tur kart oynayamıyor!</color>");
             owner.cardBlocked = false;
             TurnManager.Instance.cardOrRingTurnPlayed = true;
@@ -76,16 +77,20 @@ public class CardEffectManager : MonoBehaviour
                 StartCoroutine(Effect_UndoRotation());
                 break;
             case CardManager.CardType.Card4:
+                AudioManager.Instance.PlayOneShotSFX("Altin");
                 Effect_MoveTreasure();
                 break;
             case CardManager.CardType.Card5:
+                AudioManager.Instance.PlayOneShotSFX("Chain");                
                 Effect_SkipOpponentMove(opponent);
                 break;
             case CardManager.CardType.Card6:
+                AudioManager.Instance.PlayOneShotSFX("Altin");
                 Effect_AddExtraTreasure();
                 break;
             case CardManager.CardType.Card7:
                 StartCoroutine(Effect_BurnOpponentCard(owner, opponent));
+                AudioManager.Instance.PlayOneShotSFX("Flame");
                 break;
             case CardManager.CardType.Card8:
                 StartCoroutine(Effect_TeleportToPast(opponent));
@@ -100,9 +105,11 @@ public class CardEffectManager : MonoBehaviour
                 StartCoroutine(Effect_SwapPlayers(owner, opponent));
                 break;
             case CardManager.CardType.Card12:
+                AudioManager.Instance.PlayOneShotSFX("Chain");
                 Effect_BlockOpponentCards(opponent);
                 break;
             case CardManager.CardType.Card13:
+                AudioManager.Instance.PlayOneShotSFX("Flame");
                 StartCoroutine(Effect_BlockTile());
                 break;
         }

@@ -6,13 +6,13 @@ public class GridFiller : MonoBehaviour
 {
     public static GridFiller Instance;
 
-    [Header("Yerleþtirme Ayarlarý")]
-    public int minTreasureDistance = 2; // Oyunculara olan minimum Manhattan uzaklýðý
+    [Header("Yerleï¿½tirme Ayarlarï¿½")]
+    public int minTreasureDistance = 2; // Oyunculara olan minimum Manhattan uzaklï¿½ï¿½ï¿½
     public int trapCountPerType = 5;
 
-    [Header("Tuzak Prefablarý (Animasyonlu/Spriteli)")]
+    [Header("Tuzak Prefablarï¿½ (Animasyonlu/Spriteli)")]
     public GameObject bombPrefab;
-    [Tooltip("Piston Yönleri Sýrasýyla -> 0: Dýþa (Up), 1: Ýçe (Down), 2: Saða, 3: Sola")]
+    [Tooltip("Piston Yï¿½nleri Sï¿½rasï¿½yla -> 0: Dï¿½ï¿½a (Up), 1: ï¿½ï¿½e (Down), 2: Saï¿½a, 3: Sola")]
     public GameObject[] pistonPrefabs = new GameObject[4];
     public GameObject teleporterPrefab;
 
@@ -25,7 +25,7 @@ public class GridFiller : MonoBehaviour
         else Destroy(gameObject);
     }
 
-    // TurnManager tarafýndan oyuncular yerleþtikten hemen sonra çaðrýlýr
+    // TurnManager tarafï¿½ndan oyuncular yerleï¿½tikten hemen sonra ï¿½aï¿½rï¿½lï¿½r
     public void FillGrid()
     {
         int maxRings = GridManager.Instance.totalRings;
@@ -33,7 +33,7 @@ public class GridFiller : MonoBehaviour
         PlayerController p1 = TurnManager.Instance.player1;
         PlayerController p2 = TurnManager.Instance.player2;
 
-        // 1. Oyuncularýn olduðu yerler hariç tüm boþ haritayý listeye ekle
+        // 1. Oyuncularï¿½n olduï¿½u yerler hariï¿½ tï¿½m boï¿½ haritayï¿½ listeye ekle
         for (int r = 0; r < maxRings; r++)
         {
             for (int s = 0; s < maxSlices; s++)
@@ -45,10 +45,10 @@ public class GridFiller : MonoBehaviour
             }
         }
 
-        // 2. Hazineyi yerleþtir
+        // 2. Hazineyi yerleï¿½tir
         PlaceTreasure(p1, p2);
 
-        // 3. Tuzaklarý sýrayla yerleþtir
+        // 3. Tuzaklarï¿½ sï¿½rayla yerleï¿½tir
         PlaceTraps(TrapType.Mine, bombPrefab, trapCountPerType);
         PlacePistons(trapCountPerType);
         PlaceTraps(TrapType.Teleport, teleporterPrefab, trapCountPerType);
@@ -72,7 +72,7 @@ public class GridFiller : MonoBehaviour
             treasureLocation = validSpots[Random.Range(0, validSpots.Count)];
             GridManager.Instance.GetTile(treasureLocation.x, treasureLocation.y).hasTreasure = true;
             availableTiles.Remove(treasureLocation);
-            Debug.Log($"Hazine yerleþtirildi: Ring {treasureLocation.x}, Slice {treasureLocation.y}");
+            Debug.Log($"Hazine yerleï¿½tirildi: Ring {treasureLocation.x}, Slice {treasureLocation.y}");
         }
     }
 
@@ -89,7 +89,7 @@ public class GridFiller : MonoBehaviour
             TileData tile = GridManager.Instance.GetTile(pos.x, pos.y);
             tile.trapType = type;
 
-            // Prefabý tile'ýn son child'ý olarak yarat ve SetActive(false) yap
+            // Prefabï¿½ tile'ï¿½n son child'ï¿½ olarak yarat ve SetActive(false) yap
             GameObject trapObj = Instantiate(prefab, tile.tileTransform);
             trapObj.transform.SetAsLastSibling();
             trapObj.SetActive(false);
@@ -114,11 +114,11 @@ public class GridFiller : MonoBehaviour
             int randomIndex = Random.Range(0, availableTiles.Count);
             Vector2Int pos = availableTiles[randomIndex];
 
-            // Pistonun 2 blok itebileceði geçerli yönleri bul
+            // Pistonun 2 blok itebileceï¿½i geï¿½erli yï¿½nleri bul
             List<int> validDirs = new List<int>();
-            if (pos.x + 2 < GridManager.Instance.totalRings) validDirs.Add(0); // Dýþa iter
-            if (pos.x - 2 >= 0) validDirs.Add(1); // Ýçe iter
-            validDirs.Add(2); // Saða iter 
+            if (pos.x + 2 < GridManager.Instance.totalRings) validDirs.Add(0); // Dï¿½ï¿½a iter
+            if (pos.x - 2 >= 0) validDirs.Add(1); // ï¿½ï¿½e iter
+            validDirs.Add(2); // Saï¿½a iter 
             validDirs.Add(3); // Sola iter 
 
             if (validDirs.Count == 0) continue;
@@ -149,6 +149,7 @@ public class GridFiller : MonoBehaviour
         PlayerController player = TurnManager.Instance.activePlayer;
         yield return new WaitForSeconds(0.5f);
         tile.trapElement.GetComponent<Animator>().SetTrigger("triggerAnim");
+        AudioManager.Instance.PlayOneShotSFX("Bomb");
         yield return new WaitForSeconds(0.6f); 
 
         TileData targetTile = GridManager.Instance.GetTile(player.previousRing, player.previousSlice);

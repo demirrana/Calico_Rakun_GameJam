@@ -6,10 +6,10 @@ public class CameraManager : MonoBehaviour
 {
     public static CameraManager Instance;
 
-    [Header("Kamera Ayarlarý")]
+    [Header("Kamera Ayarlarï¿½")]
     public Camera mainCamera;
     public float rotationDuration = 1.2f;
-    [Tooltip("Zoom miktarýný belirler. (Örn: 0.7 = %30 yakýnlaþtýrýr)")]
+    [Tooltip("Zoom miktarï¿½nï¿½ belirler. (ï¿½rn: 0.7 = %30 yakï¿½nlaï¿½tï¿½rï¿½r)")]
     public float zoomMultiplier = 0.7f;
 
     private float originalOrthographicSize;
@@ -81,5 +81,19 @@ public class CameraManager : MonoBehaviour
         else mainCamera.transform.position = originalPosition;
 
         TurnManager.Instance.isCameraMoving = false;
+    }
+
+    void Start()
+    {
+        
+        StartCoroutine(StartMusic());
+    }
+
+    IEnumerator StartMusic()
+    {
+        yield return null;
+        AudioManager.Instance.StopMusic();
+        yield return new WaitForSeconds(0.5f);
+        AudioManager.Instance.PlayMusic("Game Music");
     }
 }
