@@ -26,6 +26,8 @@ public class CardManager : MonoBehaviour
         Card13
     }
 
+    public event EventHandler<CardEventArgs.ChooseCardEventArgs> OnCardChosen;
+
     [SerializeField] private GameObject cardPrefab;
     [SerializeField] private Transform cardDeckTransform;
 
@@ -66,6 +68,12 @@ public class CardManager : MonoBehaviour
     private bool isPlayer1sTurn = true; //gamemanager'a atılabilir
 
     private readonly string Trigger_SendToCenter = "SendToCenter";
+
+    public void RaiseCardChosen(object sender, Card card)
+    {
+        Debug.Log("Card " + card.name + " is triggered");
+        OnCardChosen?.Invoke(sender, new CardEventArgs.ChooseCardEventArgs(isPlayer1sTurn, card));
+    }
 
     private void Awake()
     {
@@ -145,11 +153,9 @@ public class CardManager : MonoBehaviour
 
     private IEnumerator DealInitialCards(List<Card> playerCards, List<SO_Card> playerCardsData, int mandatoryCardCount)
     {
-        //Debug.Log("METHOD: DealInitialCards is called.");
         foreach (int mandatoryCardIndex in mandatoryCardIndexes)
         {
             playerCardsData.Add(allCards[mandatoryCardIndex]);
-            //Debug.Log("Mandatory card added: " + allCards[mandatoryCardIndex]);
             lastDrawnCard = InstantiateCardOnDeck(allCards[mandatoryCardIndex], isPlayer1sTurn);
             playerCards.Add(lastDrawnCard);
             //lastDrawnCard = allCards[mandatoryCardIndex]; //!!!!!!!!bunu da instantiate içine at!!!!!!!
@@ -160,7 +166,6 @@ public class CardManager : MonoBehaviour
 
     private IEnumerator DealCards(List<Card> playerCards, List<SO_Card> playerCardsData, int cardCount) //gives random distinct cards to players
     {
-        //Debug.Log("METHOD: Deal Cards called and " + cardCount + " cards are drawn.");
         List<int> chosenIndexes = new();
         for (int i = 0; i < cardCount; i++)
         {
@@ -173,24 +178,21 @@ public class CardManager : MonoBehaviour
                 playerAlreadyHasThatCard = playerCardsData.Contains(allCards[randomIndex]);
             }
 
-            //Debug.Log("randomly chosen index:" + randomIndex);
             chosenIndexes.Add(randomIndex);
             //create card object on the deck with its so data
             lastDrawnCard = InstantiateCardOnDeck(allCards[randomIndex], isPlayer1sTurn);
             playerCardsData.Add(allCards[randomIndex]);
             playerCards.Add(lastDrawnCard);
-            //Debug.Log("so data: " + allCards[randomIndex].ToString());
-            //Debug.Log("last drawn card: " + lastDrawnCard.name);
 
             yield return StartCoroutine(AnimateCardDealing(isPlayer1sTurn, lastDrawnCard));
         }
         Debug.Log("list after dealt cards: ");
         LogList(playerCards);
+        ActivateHoverEffect(isPlayer1sTurn);
     }
 
     private Card InstantiateCardOnDeck(SO_Card cardData, bool isPlayer1sTurn) //create card object on deck transform
     {
-        //Card newCard = new(cardData, isPlayer1sTurn);
         GameObject cardObj = Instantiate(cardPrefab, cardDeckTransform);
         if (cardObj.TryGetComponent<Card>(out Card newCard))
         {
@@ -224,7 +226,6 @@ public class CardManager : MonoBehaviour
         cardAnimator.SetTrigger(Trigger_SendToCenter);
         yield return new WaitForSeconds(reachCenterPeriod);
         yield return StartCoroutine(FlipCard(card, card.GetCardData().frontFace));
-        //Debug.Log("Trigger for " + card.name + " has been triggered.");
         yield return StartCoroutine(SendCardToItsPlace(card));
     }
 
@@ -256,31 +257,23 @@ public class CardManager : MonoBehaviour
 
     private IEnumerator SendCardToItsPlace(Card card)
     {
-        // 1. ANIMATOR'I KAPAT (Işınlanmayı durduran kritik hamle)
-        // Merkeze gidiş animasyonu bittiği için artık kontrol koda geçmeli.
         Animator anim = card.GetAnimator();
         if (anim != null) anim.enabled = false;
 
-        // 2. Parent'ı serbest bırak (Dünya koordinatlarına geçiş)
         card.transform.SetParent(null, true);
 
-        // 3. Hedef Tayini
         Transform currentHolder = isPlayer1sTurn ? player1CardHolder : player2CardHolder;
         
-        // Hangi indexi kullanacağımızı belirle
         int currentIndex = isPlayer1sTurn ? p1Index : p2Index;
         
-        // X ve Y hesapla
         float xPos = startX + (currentIndex * cardSpacing); 
         float yPos = currentHolder.position.y; 
         Vector3 targetWorldPos = new Vector3(xPos, yPos, 0);
 
-        // BİR SONRAKİ KART İÇİN SAYACI ARTIR
         if (isPlayer1sTurn) p1Index++; else p2Index++;
 
         Debug.Log($"{card.name} için hedef: {targetWorldPos} (Sıra: {currentIndex})");
 
-        // 4. HAREKET DÖNGÜSÜ
         float timer = 0f;
         float duration = 1.0f; 
         Vector3 startWorldPos = card.transform.position;
@@ -293,17 +286,23 @@ public class CardManager : MonoBehaviour
             yield return null;
         }
 
-        // 5. SABİTLEME
         card.transform.position = targetWorldPos;
         card.transform.SetParent(currentHolder, true);
 
         card.transform.position = targetWorldPos;
+    }
 
-        // Hover efektini manuel aktive et
-        if(card.TryGetComponent<CardHover>(out var hover))
+    private void ActivateHoverEffect(bool isPlayer1sTurn)
+    {
+        List<Card> playerCards = isPlayer1sTurn ? player1Cards : player2Cards;
+
+        foreach (Card card in playerCards)
         {
-            hover.enabled = true; // Scripti aç
-            hover.Activate(card.transform.localPosition); // Doğru yerel pozisyonu kaydet
+            if(card.TryGetComponent<CardHover>(out var hover))
+            {
+                hover.enabled = true; // Scripti aç
+                hover.Activate(card.transform.localPosition); // Doğru yerel pozisyonu kaydet
+            }
         }
     }
 }

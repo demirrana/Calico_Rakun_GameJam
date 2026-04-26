@@ -1,10 +1,10 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class CardHover : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
+public class CardHover : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
 {
     [Header("Hover Settings")]
-    public float hoverRise = 1f;        // Sprite kullanıyorsan 0.5f - 1f arası idealdir
+    public float hoverRise = 1f;
     public float hoverScale = 1.15f;    
     public float animSpeed = 10f;       
 
@@ -28,9 +28,20 @@ public class CardHover : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
     {
         if (!isReady) return;
 
-        // Yumuşak geçiş
         transform.localPosition = Vector3.Lerp(transform.localPosition, targetPos, Time.deltaTime * animSpeed);
         transform.localScale = Vector3.Lerp(transform.localScale, targetScale, Time.deltaTime * animSpeed);
+    }
+
+    public void OnPointerClick(PointerEventData eventData) //Trigger event OnCardChosen in CardManager script
+    {
+        if (!isReady) return;
+
+        // Sol tık kontrolü (istersen sağ tıkı da ayırabilirsin)
+        if (eventData.button == PointerEventData.InputButton.Left)
+        {
+            Card card = GetComponent<Card>();
+            CardManager.Instance.RaiseCardChosen(this, card);
+        }
     }
 
     public void OnPointerEnter(PointerEventData eventData)
@@ -38,7 +49,7 @@ public class CardHover : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
         if (!isReady) return;
         targetPos = originalPos + new Vector3(0, hoverRise, 0);
         targetScale = originalScale * hoverScale;
-        transform.SetAsLastSibling(); // Kartı en öne getirir
+        transform.SetAsLastSibling();
     }
 
     public void OnPointerExit(PointerEventData eventData)
