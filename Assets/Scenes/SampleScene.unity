@@ -6991,6 +6991,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::GridManager
   totalRings: 5
   totalSlices: 8
+  player1TrailColor: {r: 0.2, g: 1, b: 1, a: 1}
+  player2TrailColor: {r: 1, g: 0.3, b: 0.4, a: 1}
   mapGrid:
   - slices:
     - tileTransform: {fileID: 475839302}
@@ -10119,13 +10121,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::GridFiller
   minTreasureDistance: 3
   trapCountPerType: 5
-  bombPrefab: {fileID: 1811944942934862405, guid: f050a4b485c48044d9a1197cc4c985a5, type: 3}
+  bombPrefab: {fileID: 9179398749520850053, guid: f050a4b485c48044d9a1197cc4c985a5, type: 3}
+  Explosion: {fileID: 8027729904733762683, guid: 35ad17288b84fdc4fae284194af078f3, type: 3}
   pistonPrefabs:
-  - {fileID: 1811944942934862405, guid: f050a4b485c48044d9a1197cc4c985a5, type: 3}
-  - {fileID: 1811944942934862405, guid: f050a4b485c48044d9a1197cc4c985a5, type: 3}
-  - {fileID: 1811944942934862405, guid: f050a4b485c48044d9a1197cc4c985a5, type: 3}
-  - {fileID: 1811944942934862405, guid: f050a4b485c48044d9a1197cc4c985a5, type: 3}
-  teleporterPrefab: {fileID: 1811944942934862405, guid: f050a4b485c48044d9a1197cc4c985a5, type: 3}
+  - {fileID: 2038941547730166312, guid: ba7493cf13a90fa42a8d6988d5b67ff9, type: 3}
+  - {fileID: 2038941547730166312, guid: ba7493cf13a90fa42a8d6988d5b67ff9, type: 3}
+  - {fileID: 2038941547730166312, guid: ba7493cf13a90fa42a8d6988d5b67ff9, type: 3}
+  - {fileID: 2038941547730166312, guid: ba7493cf13a90fa42a8d6988d5b67ff9, type: 3}
+  teleporterPrefab: {fileID: 3604173226240684917, guid: cd0af4f9f15164542b1419ac3c3d6a59, type: 3}
 --- !u!4 &2095573848
 Transform:
   m_ObjectHideFlags: 0
