@@ -11,6 +11,7 @@ public class RingRotationManager : MonoBehaviour
 
     [Header("Durum")]
     public RotationState currentState = RotationState.Idle;
+    public float angle = 90f;
 
     [Header("UI Elementleri")]
     public Button player1Button;
@@ -34,7 +35,7 @@ public class RingRotationManager : MonoBehaviour
 
     // Seçim Deðiþkenleri
     private int selectedRing = 0;
-    private int selectedDirection = 1; // 1: Sað (Saat Yönü), -1: Sol (Tersi)
+    private int selectedDirection = 1; 
     private PlayerController activePlayer;
     private GameState lastGameState;
 
@@ -43,7 +44,6 @@ public class RingRotationManager : MonoBehaviour
         if (Instance == null) Instance = this;
         else Destroy(gameObject);
 
-        // UI oklarýný baþlangýçta kapat
         rightArrowUI.SetActive(false);
         leftArrowUI.SetActive(false);
     }
@@ -53,7 +53,6 @@ public class RingRotationManager : MonoBehaviour
         CheckTurnChangesForCooldown();
         UpdateUIButtons();
 
-        // State Machine
         if (currentState == RotationState.SelectingRing)
         {
             HandleRingSelection();
@@ -64,7 +63,6 @@ public class RingRotationManager : MonoBehaviour
         }
     }
 
-    // Her yeni el baþladýðýnda cooldownlarý 1 düþürür
     private void CheckTurnChangesForCooldown()
     {
         GameState currentTurnState = TurnManager.Instance.currentState;
@@ -82,11 +80,9 @@ public class RingRotationManager : MonoBehaviour
 
     private void UpdateUIButtons()
     {
-        // Yazýlarý güncelle
         player1CooldownText.text = p1Cooldown > 0 ? p1Cooldown.ToString() : "";
         player2CooldownText.text = p2Cooldown > 0 ? p2Cooldown.ToString() : "";
 
-        // Eðer bir iþlem yapýlýyorsa butonlarý kitle
         if (currentState != RotationState.Idle)
         {
             player1Button.interactable = false;
@@ -94,7 +90,6 @@ public class RingRotationManager : MonoBehaviour
             return;
         }
 
-        // Sýra kimdeyse, action fazýndaysa ve oynanmadýysa aktif et
         bool p1CanPlay = TurnManager.Instance.currentState == GameState.Player1_ActionPhase
                          && TurnManager.Instance.cardOrRingTurnPlayable
                          && !TurnManager.Instance.cardOrRingTurnPlayed;
@@ -107,30 +102,22 @@ public class RingRotationManager : MonoBehaviour
         player2Button.interactable = p2CanPlay && p2Cooldown == 0;
     }
 
-    // --- BUTON ONCLICK EVENTLERÝ ---
-
-    // Player 1 butonu için OnClick'e bu fonksiyonu ata ve parametreye 1 yaz
-    // Player 2 butonu için OnClick'e bu fonksiyonu ata ve parametreye 2 yaz
     public void OnRingButtonClicked(int playerID)
     {
         if (currentState != RotationState.Idle) return;
 
         activePlayer = playerID == 1 ? TurnManager.Instance.player1 : TurnManager.Instance.player2;
 
-        // Cooldown'u baþlat (Kullandýðý el hariç 3 tur bekleyecek)
-        if (playerID == 1) p1Cooldown = 4; // Bu elin bitiþiyle 3'e düþecek
-        else p2Cooldown = 4;
+        if (playerID == 1) p1Cooldown = 3; 
+        else p2Cooldown = 3;
 
-        // Baþlangýç olarak oyuncunun üstünde bulunduðu ringi seç
         selectedRing = activePlayer.currentRing;
 
-        TurnManager.Instance.cardOrRingTurnPlayable = false; // Card sistemini kitle
+        TurnManager.Instance.cardOrRingTurnPlayable = false; 
         ToggleRingCursors(selectedRing, true);
 
         currentState = RotationState.SelectingRing;
     }
-
-    // --- SEÇÝM GÝRDÝLERÝ ---
 
     private void HandleRingSelection()
     {
@@ -148,9 +135,8 @@ public class RingRotationManager : MonoBehaviour
         }
         else if (Input.GetKeyDown(KeyCode.Space))
         {
-            // Ring seçildi, yön seçimine geç
             currentState = RotationState.SelectingDirection;
-            selectedDirection = 1; // Varsayýlan sað
+            selectedDirection = 1; 
             UpdateDirectionUI();
         }
     }
@@ -169,7 +155,6 @@ public class RingRotationManager : MonoBehaviour
         }
         else if (Input.GetKeyDown(KeyCode.Space))
         {
-            // Yön seçildi, animasyonu baþlat
             ToggleRingCursors(selectedRing, false);
             rightArrowUI.SetActive(false);
             leftArrowUI.SetActive(false);
@@ -187,7 +172,6 @@ public class RingRotationManager : MonoBehaviour
 
     private void ToggleRingCursors(int ringIndex, bool state)
     {
-        // Seçilen ringdeki tüm 8 dilimin cursorlarýný (1. child) aç/kapat
         for (int i = 0; i < 8; i++)
         {
             TileData tile = GridManager.Instance.GetTile(ringIndex, i);
@@ -198,17 +182,14 @@ public class RingRotationManager : MonoBehaviour
         }
     }
 
-    // --- ANÝMASYON VE MANTIKSAL KAYDIRMA ---
-
     private IEnumerator RotateRingCoroutine()
     {
         Transform ringTransform = ringParents[selectedRing];
 
-        // 90 derece (2 dilim) hesapla
-        float targetAngle = selectedDirection == 1 ? -90f : 90f; // Sað ok ise saat yönü (-90), sol ise tersi (+90)
+        float targetAngle = selectedDirection == 1 ? -angle : angle;
 
         Quaternion startRotation = ringTransform.rotation;
-        Quaternion targetRotation = startRotation * Quaternion.Euler(0, 0, targetAngle); // 2D ise Z ekseni. 3D ortamda Y ekseni dönüyorsa: Quaternion.Euler(0, targetAngle, 0) yapmalýsýn.
+        Quaternion targetRotation = startRotation * Quaternion.Euler(0, 0, targetAngle); 
 
         float elapsed = 0f;
         float duration = 1f;
@@ -222,10 +203,8 @@ public class RingRotationManager : MonoBehaviour
 
         ringTransform.rotation = targetRotation;
 
-        // Mantýksal Array Kaydýrmasý!
         ShiftLogicalArray(selectedRing, selectedDirection);
 
-        // Turu tamamla ve TurnManager'a haber ver
         currentState = RotationState.Idle;
         TurnManager.Instance.cardOrRingTurnPlayed = true;
     }
@@ -236,12 +215,10 @@ public class RingRotationManager : MonoBehaviour
         TileData[] currentSlices = GridManager.Instance.mapGrid[ring].slices;
         TileData[] newSlices = new TileData[maxSlices];
 
-        // 90 derece = 2 dilim (Slice)
         int shiftAmount = 2;
 
         for (int i = 0; i < maxSlices; i++)
         {
-            // Sað (1) ise index artar, Sol (-1) ise index azalýr
             int newIndex;
             if (direction == 1)
                 newIndex = (i + shiftAmount) % maxSlices;
@@ -251,10 +228,8 @@ public class RingRotationManager : MonoBehaviour
             newSlices[newIndex] = currentSlices[i];
         }
 
-        // GridManager'daki Array'i yenisiyle deðiþtir
         GridManager.Instance.mapGrid[ring].slices = newSlices;
 
-        // EÐER BU RÝNG'DE OYUNCU VARSA, ONLARIN MANTIKSAL KONUMUNU DA GÜNCELLE
         UpdatePlayerLogicalPosition(TurnManager.Instance.player1, ring, direction, shiftAmount);
         UpdatePlayerLogicalPosition(TurnManager.Instance.player2, ring, direction, shiftAmount);
     }
@@ -269,7 +244,7 @@ public class RingRotationManager : MonoBehaviour
             else
                 player.currentSlice = (player.currentSlice - shiftAmount + maxSlices) % maxSlices;
 
-            player.previousSlice = player.currentSlice; // Hata olmamasý için previous'ý da güncelliyoruz
+            player.previousSlice = player.currentSlice;
         }
     }
 }

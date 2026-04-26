@@ -83,7 +83,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 244537ecd5d47ec479e3d2ef3ba532ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CardHover
-  hoverRise: 1
+  hoverRise: 3
   hoverScale: 1.15
   animSpeed: 10
 --- !u!61 &4854251451917298311
@@ -120,7 +120,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: 0.31764078}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -130,7 +130,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 2, y: 3}
+  m_Size: {x: 2, y: 3.6352816}
   m_EdgeRadius: 0
 --- !u!1 &7669132630559380660
 GameObject:
