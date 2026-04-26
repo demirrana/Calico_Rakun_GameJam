@@ -22,7 +22,7 @@ public class TurnManager : MonoBehaviour
     [Header("Oyun Durumu")]
     public GameState currentState;
 
-    [Header("Dýþ Sistem Haberleþme (Card & Ring)")]
+    [Header("Dï¿½ï¿½ Sistem Haberleï¿½me (Card & Ring)")]
     public bool cardOrRingTurnPlayable = false;
     public bool cardOrRingTurnPlayed = false;
 
@@ -85,19 +85,19 @@ public class TurnManager : MonoBehaviour
         switch (currentState)
         {
             case GameState.Setup_Player1:
-                activePlayer = player1;
+                ChangeActivePlayer(player1);
                 ResetCursorToCenter();
                 break;
             case GameState.Setup_Player2:
-                activePlayer = player2;
+                ChangeActivePlayer(player2);
                 ResetCursorToCenter();
                 break;
             case GameState.Player1_MovePhase:
-                activePlayer = player1;
+                ChangeActivePlayer(player1);
                 SnapCursorToPlayer(activePlayer);
                 break;
             case GameState.Player2_MovePhase:
-                activePlayer = player2;
+                ChangeActivePlayer(player2);
                 SnapCursorToPlayer(activePlayer);
                 break;
             case GameState.Player1_ActionPhase:
@@ -106,6 +106,11 @@ public class TurnManager : MonoBehaviour
                 HideCursor();
                 break;
         }
+    }
+    void ChangeActivePlayer(PlayerController activePlayer)
+    {
+        this.activePlayer = activePlayer;
+        CardManager.Instance.TriggerChangeActivePlayer(activePlayer);
     }
 
     void ConfirmSetupSelection()
@@ -125,7 +130,7 @@ public class TurnManager : MonoBehaviour
             }
             else
             {
-                Debug.LogError("Sahnede GridFiller objesi bulunamadý!");
+                Debug.LogError("Sahnede GridFiller objesi bulunamadï¿½!");
             }
 
             ChangeState(GameState.Player1_MovePhase);
@@ -134,12 +139,12 @@ public class TurnManager : MonoBehaviour
 
     void ConfirmMoveSelection()
     {
-        // Oyuncu zaten olduðu yeri tekrar seçerse hiçbir þey yapma
+        // Oyuncu zaten olduï¿½u yeri tekrar seï¿½erse hiï¿½bir ï¿½ey yapma
         if (cursorRing == activePlayer.currentRing && cursorSlice == activePlayer.currentSlice) return;
 
         TileData targetTile = GridManager.Instance.GetTile(cursorRing, cursorSlice);
 
-        // Sistemi kitle ve hareketi baþlat
+        // Sistemi kitle ve hareketi baï¿½lat
         isProcessingMovementOrTraps = true;
         HideCursor();
 
@@ -150,28 +155,28 @@ public class TurnManager : MonoBehaviour
     {
         TileData currentTile = GridManager.Instance.GetTile(activePlayer.currentRing, activePlayer.currentSlice);
 
-        // 1. HAZÝNE KONTROLÜ
+        // 1. HAZï¿½NE KONTROLï¿½
         if (currentTile.hasTreasure)
         {
-            Debug.Log($"<color=green>OYUN BÝTTÝ! {activePlayer.playerName} HAZÝNEYÝ BULDU!</color>");
+            Debug.Log($"<color=green>OYUN Bï¿½TTï¿½! {activePlayer.playerName} HAZï¿½NEYï¿½ BULDU!</color>");
             isProcessingMovementOrTraps = false;
             ChangeState(GameState.GameOver);
             return;
         }
 
-        // 2. TUZAK KONTROLÜ
+        // 2. TUZAK KONTROLï¿½
         if (currentTile.trapType != TrapType.None)
         {
-            Debug.Log($"{activePlayer.playerName} tuzaða bastý! Tuzak Tipi: {currentTile.trapType}");
+            Debug.Log($"{activePlayer.playerName} tuzaï¿½a bastï¿½! Tuzak Tipi: {currentTile.trapType}");
 
-            // Tuzak eventini çalýþtýr (isProcessingMovementOrTraps hala TRUE, yani oyun kilitli bekliyor)
+            // Tuzak eventini ï¿½alï¿½ï¿½tï¿½r (isProcessingMovementOrTraps hala TRUE, yani oyun kilitli bekliyor)
             currentTile.onTrapTriggered?.Invoke();
 
-            // Zincirleme için burada kesiyoruz, tuzaðýn coroutine'i iþi bitince bu fonksiyonu tekrar çaðýracak.
+            // Zincirleme iï¿½in burada kesiyoruz, tuzaï¿½ï¿½n coroutine'i iï¿½i bitince bu fonksiyonu tekrar ï¿½aï¿½ï¿½racak.
             return;
         }
 
-        // 3. GÜVENLÝ ALAN (None)
+        // 3. Gï¿½VENLï¿½ ALAN (None)
         isProcessingMovementOrTraps = false;
 
         if (currentState == GameState.Player1_MovePhase)
@@ -188,7 +193,7 @@ public class TurnManager : MonoBehaviour
             ChangeState(GameState.Player1_MovePhase);
     }
 
-    // --- CURSOR (ÝMLEÇ) SÝSTEMÝ ---
+    // --- CURSOR (ï¿½MLEï¿½) Sï¿½STEMï¿½ ---
 
     void HandleFreeCursorInput()
     {
@@ -224,7 +229,7 @@ public class TurnManager : MonoBehaviour
 
         currentHighlightedTile = GridManager.Instance.GetTile(cursorRing, cursorSlice);
 
-        // Tile'ýn 1. child'ýný bul ve aktif et
+        // Tile'ï¿½n 1. child'ï¿½nï¿½ bul ve aktif et
         if (currentHighlightedTile != null && currentHighlightedTile.tileTransform.childCount > 0)
         {
             currentHighlightedTile.tileTransform.GetChild(0).gameObject.SetActive(true);
@@ -233,7 +238,7 @@ public class TurnManager : MonoBehaviour
 
     void HideCursor()
     {
-        // Önceki aktif imleci kapat
+        // ï¿½nceki aktif imleci kapat
         if (currentHighlightedTile != null && currentHighlightedTile.tileTransform.childCount > 0)
         {
             currentHighlightedTile.tileTransform.GetChild(0).gameObject.SetActive(false);

@@ -28,6 +28,9 @@ public class CardManager : MonoBehaviour
 
     public event EventHandler<CardEventArgs.ChooseCardEventArgs> OnCardChosen;
 
+    [SerializeField] private GameObject turnManagerObj;
+    [SerializeField] private GameObject ringRotationObj;
+
     [SerializeField] private GameObject cardPrefab;
     [SerializeField] private Transform cardDeckTransform;
 
@@ -65,7 +68,7 @@ public class CardManager : MonoBehaviour
 
     private Card lastDrawnCard;
 
-    public bool isPlayer1sTurn = true; //gamemanager'a atılabilir
+    public bool isPlayer1sTurn = true;
 
     private readonly string Trigger_SendToCenter = "SendToCenter";
 
@@ -101,6 +104,8 @@ public class CardManager : MonoBehaviour
         yield return StartCoroutine(DealInitialCards(player2Cards, player2CardsData, mandatoryCardIndexes.Count));
         DeleteMandatoryCards(); //some cards are given to player only at start, so delete them for random card deal
         isPlayer1sTurn = true;
+        turnManagerObj.SetActive(true);
+        ringRotationObj.SetActive(true);
         //Debug.Log("player 1 cards data:\n");
         //LogList(player1CardsData);
         //Debug.Log("player 1 cards: \n");
@@ -112,20 +117,6 @@ public class CardManager : MonoBehaviour
         foreach (T item in list)
         {
             Debug.Log(item.ToString());
-        }
-    }
-
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.A))
-        {
-            isPlayer1sTurn = !isPlayer1sTurn;
-            DetectDealingCards();
-        }
-        if (Input.GetKeyDown(KeyCode.B))
-        {
-            isPlayer1sTurn = !isPlayer1sTurn;
-            DetectDealingCards();
         }
     }
 
@@ -149,6 +140,12 @@ public class CardManager : MonoBehaviour
                 //increase or decrease cards
             }
         }
+    }
+
+    public void TriggerChangeActivePlayer(PlayerController activePlayer)
+    {
+        isPlayer1sTurn = activePlayer == TurnManager.Instance.player1 ? true : false;
+        DetectDealingCards();
     }
 
     private IEnumerator DealInitialCards(List<Card> playerCards, List<SO_Card> playerCardsData, int mandatoryCardCount)
