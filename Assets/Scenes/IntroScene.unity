@@ -903,7 +903,7 @@ MonoBehaviour:
     volume: 0.5
   - name: Game Music
     clip: {fileID: 8300000, guid: efb46de1620f91d4c811bb1b440c99c8, type: 3}
-    volume: 0
+    volume: 0.52
   oneShotSfxSounds:
   - name: Meow
     clip: {fileID: 8300000, guid: 9d4a4bcf6295db24eacc9d2ebb55c77f, type: 3}
