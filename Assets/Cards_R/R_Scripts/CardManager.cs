@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CardManager : MonoBehaviour
 {
@@ -74,6 +75,8 @@ public class CardManager : MonoBehaviour
 
     private readonly string Trigger_SendToCenter = "SendToCenter";
 
+    private Button button1;
+    private Button button2;
     public void RaiseCardChosen(object sender, Card card)
     {
         Debug.Log("Card " + card.name + " is triggered");
@@ -83,6 +86,8 @@ public class CardManager : MonoBehaviour
     private void Awake()
     {
         SetSingleton();
+        button1 = CameraManager.Instance.button1;
+        button2 = CameraManager.Instance.button2;
     }
 
     private void SetSingleton()
@@ -96,6 +101,8 @@ public class CardManager : MonoBehaviour
 
     private void Start()
     {
+        button1.interactable = false;
+        button2.interactable = false;
         StartCoroutine(SetupGameRoutine());
     }
 
@@ -111,6 +118,8 @@ public class CardManager : MonoBehaviour
         isStartOfGame = false;
         turnManagerObj.SetActive(true);
         ringRotationObj.SetActive(true);
+        button1.interactable = true;
+        button2.interactable = true;
     }
 
     private void SetPlayer1HoverRise()
