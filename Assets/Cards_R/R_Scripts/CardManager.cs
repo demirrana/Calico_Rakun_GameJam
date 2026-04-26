@@ -296,5 +296,14 @@ public class CardManager : MonoBehaviour
         // 5. SABİTLEME
         card.transform.position = targetWorldPos;
         card.transform.SetParent(currentHolder, true);
+
+        card.transform.position = targetWorldPos;
+
+        // Hover efektini manuel aktive et
+        if(card.TryGetComponent<CardHover>(out var hover))
+        {
+            hover.enabled = true; // Scripti aç
+            hover.Activate(card.transform.localPosition); // Doğru yerel pozisyonu kaydet
+        }
     }
 }
