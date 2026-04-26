@@ -4,7 +4,7 @@ using UnityEngine.EventSystems;
 public class CardHover : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
 {
     [Header("Hover Settings")]
-    public float hoverRise = 1f;
+    public float hoverRise = 3f;
     public float hoverScale = 1.15f;    
     public float animSpeed = 10f;       
 
@@ -50,6 +50,11 @@ public class CardHover : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
         targetPos = originalPos + new Vector3(0, hoverRise, 0);
         targetScale = originalScale * hoverScale;
         transform.SetAsLastSibling();
+    }
+
+    public void ChangeHoverRise()
+    {
+        hoverRise = -hoverRise;
     }
 
     public void OnPointerExit(PointerEventData eventData)

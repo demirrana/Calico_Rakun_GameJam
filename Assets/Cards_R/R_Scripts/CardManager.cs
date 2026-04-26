@@ -100,6 +100,7 @@ public class CardManager : MonoBehaviour
     private IEnumerator SetupGameRoutine()
     {
         yield return StartCoroutine(DealInitialCards(player1Cards, player1CardsData, mandatoryCardIndexes.Count));
+        SetPlayer1HoverRise();
         isPlayer1sTurn = false;
         yield return StartCoroutine(DealInitialCards(player2Cards, player2CardsData, mandatoryCardIndexes.Count));
         DeleteMandatoryCards(); //some cards are given to player only at start, so delete them for random card deal
@@ -110,6 +111,17 @@ public class CardManager : MonoBehaviour
         //LogList(player1CardsData);
         //Debug.Log("player 1 cards: \n");
         //LogList(player1Cards);
+    }
+
+    private void SetPlayer1HoverRise()
+    {
+        Debug.Log("SetPlayer1HoverRise");
+        foreach (Card card in player1Cards)
+        {
+            CardHover cardHover = card.GetComponent<CardHover>();
+            Debug.Log(cardHover.hoverRise);
+            cardHover.ChangeHoverRise();
+        }
     }
 
     private void LogList<T>(List<T> list) //to be deleted later
@@ -146,6 +158,24 @@ public class CardManager : MonoBehaviour
     {
         isPlayer1sTurn = activePlayer == TurnManager.Instance.player1 ? true : false;
         DetectDealingCards();
+        SwapHoverRises();
+    }
+
+    private void SwapHoverRises()
+    {
+        Debug.Log("SwapHoverRise");
+        foreach (Card card in player1Cards)
+        {
+            CardHover cardHover = card.GetComponent<CardHover>();
+            Debug.Log("for player 1 card:" + cardHover.hoverRise);
+            cardHover.ChangeHoverRise();
+        }
+        foreach (Card card in player2Cards)
+        {
+            CardHover cardHover = card.GetComponent<CardHover>();
+            Debug.Log("for player 2 card:" + cardHover.hoverRise);
+            cardHover.ChangeHoverRise();
+        }
     }
 
     private IEnumerator DealInitialCards(List<Card> playerCards, List<SO_Card> playerCardsData, int mandatoryCardCount)
