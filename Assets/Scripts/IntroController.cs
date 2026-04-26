@@ -30,6 +30,13 @@ public class IntroController : MonoBehaviour
     {
         // Biraz karanlıkta bekle
         yield return new WaitForSeconds(0.5f);
+        // Bir frame bekle ki AudioManager hazır olsun
+        yield return null;
+
+        AudioManager.Instance.PlayOneShotSFX("Meow");
+
+        yield return new WaitForSeconds(0.5f);
+        // ... geri kalan intro akışı
 
         // Logo fade in
         yield return StartCoroutine(FadeIn(logo, fadeInDuration));
@@ -86,4 +93,5 @@ public class IntroController : MonoBehaviour
         c.a = alpha;
         element.color = c;
     }
+
 }

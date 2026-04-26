@@ -1,31 +1,10 @@
 fileFormatVersion: 2
-guid: c1b1d5e6b2233e146b309928b826a1d3
+guid: 7e7001fab07b9ae42a6008d23e7102e3
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -4818657120295190507
-    second: HowToPlayCard_0
-  - first:
-      213: 4762737082685503709
-    second: HowToPlayCard_1
-  - first:
-      213: -8141075471275307844
-    second: HowToPlayCard_2
-  - first:
-      213: -7074226133471860407
-    second: HowToPlayCard_3
-  - first:
-      213: 4506672652818156742
-    second: HowToPlayCard_4
-  - first:
-      213: 1591041132770134141
-    second: HowToPlayCard_5
-  - first:
-      213: 8468726977189986264
-    second: HowToPlayCard_6
-  - first:
-      213: -1955069486307467437
-    second: HowToPlayCard_7
+      213: -5840615600852434578
+    second: HowToPlayCard 1_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -134,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: HowToPlayCard_0
+      name: HowToPlayCard 1_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 159
-        width: 2000
-        height: 2816
+        x: 629
+        y: 918
+        width: 862
+        height: 1365
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -149,162 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 510066221e0b02db0800000000000000
-      internalID: -4818657120295190507
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: HowToPlayCard_1
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 2260
-        width: 9
-        height: 388
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: dd8bc048424a81240800000000000000
-      internalID: 4762737082685503709
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: HowToPlayCard_2
-      rect:
-        serializedVersion: 2
-        x: 44
-        y: 2613
-        width: 10
-        height: 81
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: cbc4dfcfdf6150f80800000000000000
-      internalID: -8141075471275307844
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: HowToPlayCard_3
-      rect:
-        serializedVersion: 2
-        x: 1946
-        y: 2622
-        width: 10
-        height: 72
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 949ef9dffcc43dd90800000000000000
-      internalID: -7074226133471860407
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: HowToPlayCard_4
-      rect:
-        serializedVersion: 2
-        x: 1992
-        y: 2260
-        width: 8
-        height: 388
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 6cc813e76eaea8e30800000000000000
-      internalID: 4506672652818156742
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: HowToPlayCard_5
-      rect:
-        serializedVersion: 2
-        x: 108
-        y: 266
-        width: 7
-        height: 6
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: d788cc50b73841610800000000000000
-      internalID: 1591041132770134141
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: HowToPlayCard_6
-      rect:
-        serializedVersion: 2
-        x: 410
-        y: 163
-        width: 246
-        height: 25
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 8df3d270156f68570800000000000000
-      internalID: 8468726977189986264
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: HowToPlayCard_7
-      rect:
-        serializedVersion: 2
-        x: 1344
-        y: 163
-        width: 246
-        height: 25
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 35f107d19a23ed4e0800000000000000
-      internalID: -1955069486307467437
+      spriteID: e6106915e07f1fea0800000000000000
+      internalID: -5840615600852434578
       vertices: []
       indices: 
       edges: []
@@ -323,14 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      HowToPlayCard_0: -4818657120295190507
-      HowToPlayCard_1: 4762737082685503709
-      HowToPlayCard_2: -8141075471275307844
-      HowToPlayCard_3: -7074226133471860407
-      HowToPlayCard_4: 4506672652818156742
-      HowToPlayCard_5: 1591041132770134141
-      HowToPlayCard_6: 8468726977189986264
-      HowToPlayCard_7: -1955069486307467437
+      HowToPlayCard 1_0: -5840615600852434578
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

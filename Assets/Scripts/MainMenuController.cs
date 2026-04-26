@@ -18,6 +18,7 @@ public class MainMenuController : MonoBehaviour
     {
         blackoutOn();
         yield return new WaitForSeconds(1f);
+        AudioManager.Instance.StopMusic();
         SceneManager.LoadScene("SampleScene");
         yield return new WaitForSeconds(0.3f);
         blackoutOff();
@@ -47,5 +48,9 @@ public class MainMenuController : MonoBehaviour
     }
     public void blackoutOff(){
         blackoutAnim.SetTrigger("blackoutoff");
+    }
+    void Start()
+    {
+        AudioManager.Instance.PlayMusic("Main Menu Music");
     }
 }

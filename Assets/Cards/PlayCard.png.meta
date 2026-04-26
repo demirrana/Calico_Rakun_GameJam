@@ -1,31 +1,10 @@
 fileFormatVersion: 2
-guid: 9a87dbc6a1bcad84c8c79cf579299686
+guid: ea9eef3cf5738dd4e99d9bdc7e73760a
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -3820874361671012152
-    second: PlayCard_0
-  - first:
-      213: 936666760194732487
-    second: PlayCard_1
-  - first:
-      213: -8976639973941024188
-    second: PlayCard_2
-  - first:
-      213: 8531571201150288094
-    second: PlayCard_3
-  - first:
-      213: 4669081491640206038
-    second: PlayCard_4
-  - first:
-      213: -21551751209565289
-    second: PlayCard_5
-  - first:
-      213: -6295263341940819096
-    second: PlayCard_6
-  - first:
-      213: 3291276139694425728
-    second: PlayCard_7
+      213: -1834260224828798905
+    second: PlayCard 1_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -134,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: PlayCard_0
+      name: PlayCard 1_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 159
-        width: 2000
-        height: 2816
+        x: 629
+        y: 918
+        width: 862
+        height: 1365
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -149,162 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 8c0b33d030789fac0800000000000000
-      internalID: -3820874361671012152
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: PlayCard_1
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 2260
-        width: 9
-        height: 388
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 7c1b25aa475bffc00800000000000000
-      internalID: 936666760194732487
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: PlayCard_2
-      rect:
-        serializedVersion: 2
-        x: 44
-        y: 2613
-        width: 10
-        height: 81
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 44a6ca401819c6380800000000000000
-      internalID: -8976639973941024188
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: PlayCard_3
-      rect:
-        serializedVersion: 2
-        x: 1946
-        y: 2622
-        width: 10
-        height: 72
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: ed004842eca366670800000000000000
-      internalID: 8531571201150288094
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: PlayCard_4
-      rect:
-        serializedVersion: 2
-        x: 1992
-        y: 2260
-        width: 8
-        height: 388
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 6d2c098f0e8ebc040800000000000000
-      internalID: 4669081491640206038
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: PlayCard_5
-      rect:
-        serializedVersion: 2
-        x: 108
-        y: 266
-        width: 7
-        height: 6
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 793cdd4ebce63bff0800000000000000
-      internalID: -21551751209565289
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: PlayCard_6
-      rect:
-        serializedVersion: 2
-        x: 410
-        y: 163
-        width: 246
-        height: 25
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 86b3410285bb2a8a0800000000000000
-      internalID: -6295263341940819096
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: PlayCard_7
-      rect:
-        serializedVersion: 2
-        x: 1344
-        y: 163
-        width: 246
-        height: 25
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 086843c0636fcad20800000000000000
-      internalID: 3291276139694425728
+      spriteID: 74883793b066b86e0800000000000000
+      internalID: -1834260224828798905
       vertices: []
       indices: 
       edges: []
@@ -323,14 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      PlayCard_0: -3820874361671012152
-      PlayCard_1: 936666760194732487
-      PlayCard_2: -8976639973941024188
-      PlayCard_3: 8531571201150288094
-      PlayCard_4: 4669081491640206038
-      PlayCard_5: -21551751209565289
-      PlayCard_6: -6295263341940819096
-      PlayCard_7: 3291276139694425728
+      PlayCard 1_0: -1834260224828798905
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

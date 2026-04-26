@@ -1,31 +1,10 @@
 fileFormatVersion: 2
-guid: 35d75ca2d68739f4c969a724e03b2d40
+guid: db778b86fef7a0d48b3887306f3500ee
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 1507037772270838138
-    second: ExitCard_0
-  - first:
-      213: 1029909433592370234
-    second: ExitCard_1
-  - first:
-      213: 8242743800592990018
-    second: ExitCard_2
-  - first:
-      213: -2663205518467384995
-    second: ExitCard_3
-  - first:
-      213: -3072230454751110427
-    second: ExitCard_4
-  - first:
-      213: 4813310362565972382
-    second: ExitCard_5
-  - first:
-      213: -7439591660272517439
-    second: ExitCard_6
-  - first:
-      213: 2195694429696616401
-    second: ExitCard_7
+      213: -6146936074619753926
+    second: ExitCard 1_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -134,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: ExitCard_0
+      name: ExitCard 1_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 159
-        width: 2000
-        height: 2816
+        x: 629
+        y: 918
+        width: 862
+        height: 1365
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -149,162 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: a71ac478ed21ae410800000000000000
-      internalID: 1507037772270838138
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: ExitCard_1
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 2260
-        width: 9
-        height: 388
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: a34d8145c29fa4e00800000000000000
-      internalID: 1029909433592370234
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: ExitCard_2
-      rect:
-        serializedVersion: 2
-        x: 44
-        y: 2613
-        width: 10
-        height: 81
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 24ff5e090db146270800000000000000
-      internalID: 8242743800592990018
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: ExitCard_3
-      rect:
-        serializedVersion: 2
-        x: 1946
-        y: 2622
-        width: 10
-        height: 72
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: d5934e3f0b46a0bd0800000000000000
-      internalID: -2663205518467384995
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: ExitCard_4
-      rect:
-        serializedVersion: 2
-        x: 1992
-        y: 2260
-        width: 8
-        height: 388
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 5ea5c64cdae3d55d0800000000000000
-      internalID: -3072230454751110427
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: ExitCard_5
-      rect:
-        serializedVersion: 2
-        x: 108
-        y: 266
-        width: 7
-        height: 6
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: e919372d5405cc240800000000000000
-      internalID: 4813310362565972382
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: ExitCard_6
-      rect:
-        serializedVersion: 2
-        x: 410
-        y: 163
-        width: 246
-        height: 25
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 1ce7f773dc241c890800000000000000
-      internalID: -7439591660272517439
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: ExitCard_7
-      rect:
-        serializedVersion: 2
-        x: 1344
-        y: 163
-        width: 246
-        height: 25
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 1d7ee55537ca87e10800000000000000
-      internalID: 2195694429696616401
+      spriteID: a3a614f3532b1baa0800000000000000
+      internalID: -6146936074619753926
       vertices: []
       indices: 
       edges: []
@@ -323,14 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      ExitCard_0: 1507037772270838138
-      ExitCard_1: 1029909433592370234
-      ExitCard_2: 8242743800592990018
-      ExitCard_3: -2663205518467384995
-      ExitCard_4: -3072230454751110427
-      ExitCard_5: 4813310362565972382
-      ExitCard_6: -7439591660272517439
-      ExitCard_7: 2195694429696616401
+      ExitCard 1_0: -6146936074619753926
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
