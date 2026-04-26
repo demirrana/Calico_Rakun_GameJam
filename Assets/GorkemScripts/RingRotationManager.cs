@@ -13,10 +13,12 @@ public class RingRotationManager : MonoBehaviour
     private int lastRotatedRing = -1;
     private int lastRotationDirection = 0;
 
-
     [Header("Durum")]
     public RotationState currentState = RotationState.Idle;
     public float angle = 90f;
+
+    // YENİ EKLENEN KONTROL KİLİDİ
+    [HideInInspector] public bool invertControls = false;
 
     [Header("UI Elementleri")]
     public Button player1Button;
@@ -24,23 +26,21 @@ public class RingRotationManager : MonoBehaviour
     public Button player2Button;
     public TMP_Text player2CooldownText;
 
-    [Header("Canvas Y�n Oklar� (Sa�/Sol)")]
-    [Tooltip("Canvas'a koydu�unuz Sa� Ok objesi")]
+    [Header("Canvas Yön Okları (Sağ/Sol)")]
+    [Tooltip("Canvas'a koyduğunuz Sağ Ok objesi")]
     public GameObject rightArrowUI;
-    [Tooltip("Canvas'a koydu�unuz Sol Ok objesi")]
+    [Tooltip("Canvas'a koyduğunuz Sol Ok objesi")]
     public GameObject leftArrowUI;
 
     [Header("Ring Parent Objeleri")]
     [Tooltip("Sahnede 0'dan 4'e kadar her bir ringin 8 dilimini kapsayan Parent(Ana) objeler")]
     public Transform[] ringParents = new Transform[5];
 
-    // Cooldown Takibi
     private int p1Cooldown = 0;
     private int p2Cooldown = 0;
 
-    // Se�im De�i�kenleri
     private int selectedRing = 0;
-    private int selectedDirection = 1; 
+    private int selectedDirection = 1;
     private PlayerController activePlayer;
     private GameState lastGameState;
 
@@ -51,14 +51,13 @@ public class RingRotationManager : MonoBehaviour
 
     public IEnumerator UndoLastRotation()
     {
-        // Ters yöne çevir
         selectedRing = lastRotatedRing;
         selectedDirection = -lastRotationDirection;
         currentState = RotationState.Animating;
 
         yield return StartCoroutine(RotateRingCoroutine());
 
-        lastRotatedRing = -1; // Resetle
+        lastRotatedRing = -1; 
     }
 
     void Awake()
@@ -130,12 +129,12 @@ public class RingRotationManager : MonoBehaviour
 
         activePlayer = playerID == 1 ? TurnManager.Instance.player1 : TurnManager.Instance.player2;
 
-        if (playerID == 1) p1Cooldown = 3; 
-        else p2Cooldown = 3;
+        if (playerID == 1) p1Cooldown = 2;
+        else p2Cooldown = 2;
 
         selectedRing = activePlayer.currentRing;
 
-        TurnManager.Instance.cardOrRingTurnPlayable = false; 
+        TurnManager.Instance.cardOrRingTurnPlayable = false;
         ToggleRingCursors(selectedRing, true);
 
         currentState = RotationState.SelectingRing;
@@ -143,13 +142,16 @@ public class RingRotationManager : MonoBehaviour
 
     private void HandleRingSelection()
     {
-        if (Input.GetKeyDown(KeyCode.UpArrow) && selectedRing < 4)
+        KeyCode upKey = invertControls ? KeyCode.DownArrow : KeyCode.UpArrow;
+        KeyCode downKey = invertControls ? KeyCode.UpArrow : KeyCode.DownArrow;
+
+        if (Input.GetKeyDown(upKey) && selectedRing < 4)
         {
             ToggleRingCursors(selectedRing, false);
             selectedRing++;
             ToggleRingCursors(selectedRing, true);
         }
-        else if (Input.GetKeyDown(KeyCode.DownArrow) && selectedRing > 0)
+        else if (Input.GetKeyDown(downKey) && selectedRing > 0)
         {
             ToggleRingCursors(selectedRing, false);
             selectedRing--;
@@ -158,19 +160,22 @@ public class RingRotationManager : MonoBehaviour
         else if (Input.GetKeyDown(KeyCode.Space))
         {
             currentState = RotationState.SelectingDirection;
-            selectedDirection = 1; 
+            selectedDirection = 1;
             UpdateDirectionUI();
         }
     }
 
     private void HandleDirectionSelection()
     {
-        if (Input.GetKeyDown(KeyCode.RightArrow))
+        KeyCode rightKey = invertControls ? KeyCode.LeftArrow : KeyCode.RightArrow;
+        KeyCode leftKey = invertControls ? KeyCode.RightArrow : KeyCode.LeftArrow;
+
+        if (Input.GetKeyDown(rightKey))
         {
             selectedDirection = 1;
             UpdateDirectionUI();
         }
-        else if (Input.GetKeyDown(KeyCode.LeftArrow))
+        else if (Input.GetKeyDown(leftKey))
         {
             selectedDirection = -1;
             UpdateDirectionUI();
@@ -211,7 +216,7 @@ public class RingRotationManager : MonoBehaviour
         float targetAngle = selectedDirection == 1 ? -angle : angle;
 
         Quaternion startRotation = ringTransform.rotation;
-        Quaternion targetRotation = startRotation * Quaternion.Euler(0, 0, targetAngle); 
+        Quaternion targetRotation = startRotation * Quaternion.Euler(0, 0, targetAngle);
 
         float elapsed = 0f;
         float duration = 1f;
@@ -226,7 +231,7 @@ public class RingRotationManager : MonoBehaviour
         ringTransform.rotation = targetRotation;
 
         ShiftLogicalArray(selectedRing, selectedDirection);
-        
+
         lastRotatedRing = selectedRing;
         lastRotationDirection = selectedDirection;
 

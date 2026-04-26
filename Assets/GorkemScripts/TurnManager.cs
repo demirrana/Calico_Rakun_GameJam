@@ -22,9 +22,13 @@ public class TurnManager : MonoBehaviour
     [Header("Oyun Durumu")]
     public GameState currentState;
 
-    [Header("D�� Sistem Haberle�me (Card & Ring)")]
+    [Header("Dış Sistem Haberleşme (Card & Ring)")]
     public bool cardOrRingTurnPlayable = false;
     public bool cardOrRingTurnPlayed = false;
+
+    // YENİ: Kamera ve Kontrol Kilitleri
+    [HideInInspector] public bool isCameraMoving = false;
+    [HideInInspector] public bool invertControls = false;
 
     private int cursorRing = 0;
     private int cursorSlice = 0;
@@ -47,7 +51,8 @@ public class TurnManager : MonoBehaviour
 
     void Update()
     {
-        if (isProcessingMovementOrTraps) return;
+        // YENİ: Kamera dönerken veya tuzaklar çalışırken girdi almayı engelle
+        if (isProcessingMovementOrTraps || isCameraMoving) return;
 
         switch (currentState)
         {
@@ -107,10 +112,12 @@ public class TurnManager : MonoBehaviour
                 break;
         }
     }
+
     void ChangeActivePlayer(PlayerController activePlayer)
     {
         this.activePlayer = activePlayer;
-        CardManager.Instance.TriggerChangeActivePlayer(activePlayer);
+        if (CardManager.Instance != null)
+            CardManager.Instance.TriggerChangeActivePlayer(activePlayer);
     }
 
     void ConfirmSetupSelection()
@@ -121,6 +128,8 @@ public class TurnManager : MonoBehaviour
         if (currentState == GameState.Setup_Player1)
         {
             ChangeState(GameState.Setup_Player2);
+            // P1 yerleştikten sonra kamerayı P2'ye çevir
+            if (CameraManager.Instance != null) CameraManager.Instance.SwitchTurnView(false);
         }
         else
         {
@@ -130,21 +139,23 @@ public class TurnManager : MonoBehaviour
             }
             else
             {
-                Debug.LogError("Sahnede GridFiller objesi bulunamad�!");
+                Debug.LogError("Sahnede GridFiller objesi bulunamadı!");
             }
 
             ChangeState(GameState.Player1_MovePhase);
+            // Oyun başladığında kamerayı tekrar P1'e çevir
+            if (CameraManager.Instance != null) CameraManager.Instance.SwitchTurnView(true);
         }
     }
 
     void ConfirmMoveSelection()
     {
-        // Oyuncu zaten oldu�u yeri tekrar se�erse hi�bir �ey yapma
+        // Oyuncu zaten olduğu yeri tekrar seçerse hiçbir şey yapma
         if (cursorRing == activePlayer.currentRing && cursorSlice == activePlayer.currentSlice) return;
 
         TileData targetTile = GridManager.Instance.GetTile(cursorRing, cursorSlice);
 
-        // Sistemi kitle ve hareketi ba�lat
+        // Sistemi kitle ve hareketi başlat
         isProcessingMovementOrTraps = true;
         HideCursor();
 
@@ -155,28 +166,26 @@ public class TurnManager : MonoBehaviour
     {
         TileData currentTile = GridManager.Instance.GetTile(activePlayer.currentRing, activePlayer.currentSlice);
 
-        // 1. HAZ�NE KONTROL�
+        // 1. HAZİNE KONTROLÜ
         if (currentTile.hasTreasure)
         {
-            Debug.Log($"<color=green>OYUN B�TT�! {activePlayer.playerName} HAZ�NEY� BULDU!</color>");
+            Debug.Log($"<color=green>OYUN BİTTİ! {activePlayer.playerName} HAZİNEYİ BULDU!</color>");
             isProcessingMovementOrTraps = false;
             ChangeState(GameState.GameOver);
             return;
         }
 
-        // 2. TUZAK KONTROL�
+        // 2. TUZAK KONTROLÜ
         if (currentTile.trapType != TrapType.None)
         {
-            Debug.Log($"{activePlayer.playerName} tuza�a bast�! Tuzak Tipi: {currentTile.trapType}");
+            Debug.Log($"{activePlayer.playerName} tuzağa bastı! Tuzak Tipi: {currentTile.trapType}");
 
-            // Tuzak eventini �al��t�r (isProcessingMovementOrTraps hala TRUE, yani oyun kilitli bekliyor)
+            // Tuzak eventini çalıştır
             currentTile.onTrapTriggered?.Invoke();
-
-            // Zincirleme i�in burada kesiyoruz, tuza��n coroutine'i i�i bitince bu fonksiyonu tekrar �a��racak.
             return;
         }
 
-        // 3. G�VENL� ALAN (None)
+        // 3. GÜVENLİ ALAN (None)
         isProcessingMovementOrTraps = false;
 
         if (currentState == GameState.Player1_MovePhase)
@@ -188,22 +197,34 @@ public class TurnManager : MonoBehaviour
     void EndActionPhase()
     {
         if (currentState == GameState.Player1_ActionPhase)
+        {
             ChangeState(GameState.Player2_MovePhase);
+            if (CameraManager.Instance != null) CameraManager.Instance.SwitchTurnView(false);
+        }
         else if (currentState == GameState.Player2_ActionPhase)
+        {
             ChangeState(GameState.Player1_MovePhase);
+            if (CameraManager.Instance != null) CameraManager.Instance.SwitchTurnView(true);
+        }
     }
 
-    // --- CURSOR (�MLE�) S�STEM� ---
+    // --- CURSOR (İMLEÇ) SİSTEMİ (İNVERT KONTROL EKLENDİ) ---
 
     void HandleFreeCursorInput()
     {
         bool moved = false;
 
-        if (Input.GetKeyDown(KeyCode.UpArrow) && cursorRing < GridManager.Instance.totalRings - 1) { cursorRing++; moved = true; }
-        if (Input.GetKeyDown(KeyCode.DownArrow) && cursorRing > 0) { cursorRing--; moved = true; }
+        // YENİ: Kamera yönüne göre tuşları tersine çeviriyoruz
+        KeyCode upKey = invertControls ? KeyCode.DownArrow : KeyCode.UpArrow;
+        KeyCode downKey = invertControls ? KeyCode.UpArrow : KeyCode.DownArrow;
+        KeyCode rightKey = invertControls ? KeyCode.LeftArrow : KeyCode.RightArrow;
+        KeyCode leftKey = invertControls ? KeyCode.RightArrow : KeyCode.LeftArrow;
 
-        if (Input.GetKeyDown(KeyCode.RightArrow)) { cursorSlice = (cursorSlice + 1) % GridManager.Instance.totalSlices; moved = true; }
-        if (Input.GetKeyDown(KeyCode.LeftArrow)) { cursorSlice = (cursorSlice - 1 + GridManager.Instance.totalSlices) % GridManager.Instance.totalSlices; moved = true; }
+        if (Input.GetKeyDown(upKey) && cursorRing < GridManager.Instance.totalRings - 1) { cursorRing++; moved = true; }
+        if (Input.GetKeyDown(downKey) && cursorRing > 0) { cursorRing--; moved = true; }
+
+        if (Input.GetKeyDown(rightKey)) { cursorSlice = (cursorSlice + 1) % GridManager.Instance.totalSlices; moved = true; }
+        if (Input.GetKeyDown(leftKey)) { cursorSlice = (cursorSlice - 1 + GridManager.Instance.totalSlices) % GridManager.Instance.totalSlices; moved = true; }
 
         if (moved) UpdateCursorVisual();
     }
@@ -214,11 +235,16 @@ public class TurnManager : MonoBehaviour
         int r = activePlayer.currentRing;
         int s = activePlayer.currentSlice;
 
-        if (Input.GetKeyDown(KeyCode.UpArrow) && r < GridManager.Instance.totalRings - 1) { cursorRing = r + 1; cursorSlice = s; moved = true; }
-        if (Input.GetKeyDown(KeyCode.DownArrow) && r > 0) { cursorRing = r - 1; cursorSlice = s; moved = true; }
+        KeyCode upKey = invertControls ? KeyCode.DownArrow : KeyCode.UpArrow;
+        KeyCode downKey = invertControls ? KeyCode.UpArrow : KeyCode.DownArrow;
+        KeyCode rightKey = invertControls ? KeyCode.LeftArrow : KeyCode.RightArrow;
+        KeyCode leftKey = invertControls ? KeyCode.RightArrow : KeyCode.LeftArrow;
 
-        if (Input.GetKeyDown(KeyCode.RightArrow)) { cursorRing = r; cursorSlice = (s + 1) % GridManager.Instance.totalSlices; moved = true; }
-        if (Input.GetKeyDown(KeyCode.LeftArrow)) { cursorRing = r; cursorSlice = (s - 1 + GridManager.Instance.totalSlices) % GridManager.Instance.totalSlices; moved = true; }
+        if (Input.GetKeyDown(upKey) && r < GridManager.Instance.totalRings - 1) { cursorRing = r + 1; cursorSlice = s; moved = true; }
+        if (Input.GetKeyDown(downKey) && r > 0) { cursorRing = r - 1; cursorSlice = s; moved = true; }
+
+        if (Input.GetKeyDown(rightKey)) { cursorRing = r; cursorSlice = (s + 1) % GridManager.Instance.totalSlices; moved = true; }
+        if (Input.GetKeyDown(leftKey)) { cursorRing = r; cursorSlice = (s - 1 + GridManager.Instance.totalSlices) % GridManager.Instance.totalSlices; moved = true; }
 
         if (moved) UpdateCursorVisual();
     }
@@ -229,7 +255,6 @@ public class TurnManager : MonoBehaviour
 
         currentHighlightedTile = GridManager.Instance.GetTile(cursorRing, cursorSlice);
 
-        // Tile'�n 1. child'�n� bul ve aktif et
         if (currentHighlightedTile != null && currentHighlightedTile.tileTransform.childCount > 0)
         {
             currentHighlightedTile.tileTransform.GetChild(0).gameObject.SetActive(true);
@@ -238,7 +263,6 @@ public class TurnManager : MonoBehaviour
 
     void HideCursor()
     {
-        // �nceki aktif imleci kapat
         if (currentHighlightedTile != null && currentHighlightedTile.tileTransform.childCount > 0)
         {
             currentHighlightedTile.tileTransform.GetChild(0).gameObject.SetActive(false);
