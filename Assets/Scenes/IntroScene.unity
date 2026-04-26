@@ -926,6 +926,12 @@ MonoBehaviour:
   - name: StoneClick
     clip: {fileID: 8300000, guid: 8cdbc02fd2d979f4297d59b091e583b5, type: 3}
     volume: 1
+  - name: jumppad
+    clip: {fileID: 8300000, guid: 9fde6d541d670c444bbcb938e6938eb4, type: 3}
+    volume: 1
+  - name: teleport
+    clip: {fileID: 8300000, guid: 7609b16cc6558c24ca801b6c6edfb5fb, type: 3}
+    volume: 1
   loopedSfxSounds: []
   musicFadeDuration: 0.5
   loopedSfxFadeDuration: 0.5

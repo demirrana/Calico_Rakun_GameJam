@@ -202,6 +202,8 @@ public class GridFiller : MonoBehaviour
 
         yield return new WaitForSeconds(1f);
         tile.trapElement.GetComponent<Animator>().SetTrigger("piston");
+        if (AudioManager.Instance != null)
+            AudioManager.Instance.PlayOneShotSFX("jumppad");
 
         int targetR = trapPos.x;
         int targetS = trapPos.y;
@@ -230,6 +232,8 @@ public class GridFiller : MonoBehaviour
 
         yield return new WaitForSeconds(1f);
         tile.trapElement.GetComponent<Animator>().SetTrigger("teleport");
+        if (AudioManager.Instance != null)
+            AudioManager.Instance.PlayOneShotSFX("teleport");
 
         List<Vector2Int> validTps = new List<Vector2Int>();
         for (int r = 0; r < GridManager.Instance.totalRings; r++)
