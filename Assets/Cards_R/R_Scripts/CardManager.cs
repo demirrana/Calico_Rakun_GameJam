@@ -265,7 +265,7 @@ public class CardManager : MonoBehaviour
 
     private IEnumerator FlipCard(Card card, Sprite frontSprite)
     {
-        float duration = 0.25f; //half of flip time
+        float duration = 0.15f; //half of flip time
         Vector3 originalScale = card.transform.localScale;
 
         float timer = 0; //narrow the card down
@@ -309,7 +309,7 @@ public class CardManager : MonoBehaviour
         Debug.Log($"{card.name} için hedef: {targetWorldPos} (Sıra: {currentIndex})");
 
         float timer = 0f;
-        float duration = 1.0f; 
+        float duration = 0.7f; 
         Vector3 startWorldPos = card.transform.position;
 
         while (timer < duration)
