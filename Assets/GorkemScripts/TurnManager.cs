@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public enum GameState
 {
@@ -18,6 +19,12 @@ public class TurnManager : MonoBehaviour
     [Header("Oyuncular")]
     public PlayerController player1;
     public PlayerController player2;
+
+    [Header("Kazanma Ekranı")]
+    public GameObject winPanel;           // Kazanma UI paneli
+    public Image winImage;                // Kazanma görseli
+    public Sprite player1WinSprite;       // P1 kazanma görseli
+    public Sprite player2WinSprite;       // P2 kazanma görseli
 
     [Header("Oyun Durumu")]
     public GameState currentState;
@@ -53,7 +60,14 @@ public class TurnManager : MonoBehaviour
     {
         // YENİ: Kamera dönerken veya tuzaklar çalışırken girdi almayı engelle
         if (isProcessingMovementOrTraps || isCameraMoving) return;
-
+        // DEBUG: W tuşuna bas, anında kazan
+        if (Input.GetKeyDown(KeyCode.W))
+        {
+            Debug.Log("<color=green>[DEBUG] Zorla kazanma tetiklendi!</color>");
+            TileData currentTile = GridManager.Instance.GetTile(activePlayer.currentRing, activePlayer.currentSlice);
+            currentTile.hasTreasure = true;
+            EvaluateCurrentPlayerTile();
+        }
         switch (currentState)
         {
             case GameState.Setup_Player1:
@@ -172,10 +186,17 @@ public class TurnManager : MonoBehaviour
     {
         TileData currentTile = GridManager.Instance.GetTile(activePlayer.currentRing, activePlayer.currentSlice);
 
+
         // 1. HAZİNE KONTROLÜ
         if (currentTile.hasTreasure)
         {
             Debug.Log($"<color=green>OYUN BİTTİ! {activePlayer.playerName} HAZİNEYİ BULDU!</color>");
+
+            bool isP1 = (activePlayer == player1);
+            winImage.sprite = isP1 ? player1WinSprite : player2WinSprite;
+            winPanel.SetActive(true);
+            winPanel.transform.SetAsLastSibling();
+
             isProcessingMovementOrTraps = false;
             ChangeState(GameState.GameOver);
             return;
