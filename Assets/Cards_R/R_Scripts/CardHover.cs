@@ -33,29 +33,57 @@ public class CardHover : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
         transform.localScale = Vector3.Lerp(transform.localScale, targetScale, Time.deltaTime * animSpeed);
     }
 
-    public void OnPointerClick(PointerEventData eventData) 
+    public void OnPointerClick(PointerEventData eventData)
     {
         if (!isReady) return;
+        if (eventData.button != PointerEventData.InputButton.Left) return;
 
         Card card = this.gameObject.GetComponent<Card>();
-        bool isPlayer1sTurn = CardManager.Instance.isPlayer1sTurn;
-        bool doesHolderBelongToPlayer1 = card.transform.parent == CardManager.Instance.GetPlayer1CardHolder();
 
-        if ((isPlayer1sTurn && !doesHolderBelongToPlayer1) || (!isPlayer1sTurn && doesHolderBelongToPlayer1))
+        // --- KART 7: Rakip kart seçim modu ---
+        if (CardEffectManager.Instance != null && CardEffectManager.Instance.isSelectingOpponentCard)
+        {
+            // Sadece RAKİBİN kartını seçebilsin
+            bool isPlayer1sTurn = CardManager.Instance.isPlayer1sTurn;
+            bool doesHolderBelongToPlayer1 = card.transform.parent == CardManager.Instance.GetPlayer1CardHolder();
+
+            // Kendi kartını seçmeye çalışıyorsa engelle
+            if ((isPlayer1sTurn && doesHolderBelongToPlayer1) || (!isPlayer1sTurn && !doesHolderBelongToPlayer1))
+            {
+                Debug.Log("Kendi kartını seçemezsin, rakibin kartını seç!");
+                return;
+            }
+
+            CardEffectManager.Instance.OnOpponentCardSelected(card);
+            return;
+        }
+
+        // --- NORMAL KART KULLANIMI ---
+        bool currentTurn = CardManager.Instance.isPlayer1sTurn;
+        bool holderIsP1 = card.transform.parent == CardManager.Instance.GetPlayer1CardHolder();
+
+        // Kendi kartın değilse tıklama
+        if ((currentTurn && !holderIsP1) || (!currentTurn && holderIsP1))
         {
             return;
         }
 
-        if (eventData.button == PointerEventData.InputButton.Left)
+        // Kart engeli kontrolü (Kart 12)
+        PlayerController owner = currentTurn ? TurnManager.Instance.player1 : TurnManager.Instance.player2;
+        if (owner.cardBlocked && TurnManager.Instance.cardOrRingTurnPlayable)
         {
-            CardManager.Instance.RaiseCardChosen(this, card);
-            if (TurnManager.Instance.cardOrRingTurnPlayable)
-            {
-                CardManager.Instance.RemoveCardAndReorganize(card);
-            }
+            Debug.Log($"<color=red>{owner.playerName} bu tur kart oynayamıyor!</color>");
+            owner.cardBlocked = false;
+            TurnManager.Instance.cardOrRingTurnPlayed = true;
+            return;
+        }
+
+        CardManager.Instance.RaiseCardChosen(this, card);
+        if (TurnManager.Instance.cardOrRingTurnPlayable)
+        {
+            CardManager.Instance.RemoveCardAndReorganize(card);
         }
     }
-
     public void OnPointerEnter(PointerEventData eventData)
     {
         CardManager.Instance.hintObject.SetActive(true);

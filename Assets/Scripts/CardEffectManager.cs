@@ -11,6 +11,11 @@ public class CardEffectManager : MonoBehaviour
     public Color decoyColor = Color.red;     // Kart 2: sahte ipucu
     public float highlightDuration = 3f;
 
+    // Kart 13 için seçim değişkenleri
+    private bool isSelectingTileToBlock = false;
+    private bool waitingForTileSelection = false;
+
+
     void Awake()
     {
         if (Instance == null) Instance = this;
@@ -243,12 +248,42 @@ public class CardEffectManager : MonoBehaviour
 
         TurnManager.Instance.cardOrRingTurnPlayed = true;
     }
+    // Kart 7 değişkenleri
+    [HideInInspector] public bool isSelectingOpponentCard = false;
+    private bool waitingForCardSelection = false;
 
-    // ============ KART 7: Karşı Oyuncunun Kartını Yak ============
     private IEnumerator Effect_BurnOpponentCard(PlayerController owner, PlayerController opponent)
     {
-        Debug.Log($"<color=red>[KART 7] {opponent.playerName} rastgele bir kartını kaybediyor!</color>");
-        yield break; // TODO: Kart seçtirme UI'ı eklenecek
+        bool isOpponentP1 = (opponent == TurnManager.Instance.player1);
+        List<Card> opponentCards = CardManager.Instance.GetPlayerCards(isOpponentP1);
+
+        if (opponentCards.Count == 0)
+        {
+            Debug.Log("<color=red>[KART 7] Karşı oyuncunun yakılacak kartı yok!</color>");
+            TurnManager.Instance.cardOrRingTurnPlayed = true;
+            yield break;
+        }
+
+        Debug.Log("<color=yellow>[KART 7] Rakibin kartlarından birini tıkla!</color>");
+        isSelectingOpponentCard = true;
+        waitingForCardSelection = true;
+
+        yield return new WaitUntil(() => !waitingForCardSelection);
+
+        TurnManager.Instance.cardOrRingTurnPlayed = true;
+    }
+
+    public void OnOpponentCardSelected(Card selectedCard)
+    {
+        if (!isSelectingOpponentCard) return;
+
+        Debug.Log($"<color=red>[KART 7] Kart yakıldı: {selectedCard.GetCardData().cardType}</color>");
+
+        CardManager.Instance.RemoveCardAndReorganize(selectedCard);
+        Destroy(selectedCard.gameObject);
+
+        isSelectingOpponentCard = false;
+        waitingForCardSelection = false;
     }
 
     // ============ KART 8: 2 Hamle Önceki Konuma Işınla ============
@@ -269,9 +304,14 @@ public class CardEffectManager : MonoBehaviour
     // ============ KART 9: Bu El 2 Adım At ============
     private void Effect_DoubleStep(PlayerController owner)
     {
-        owner.extraSteps = 1;
-        Debug.Log($"<color=green>[KART 9] {owner.playerName} bu tur 2 adım atacak!</color>");
-        TurnManager.Instance.cardOrRingTurnPlayed = true;
+        Debug.Log($"<color=green>[KART 9] {owner.playerName} ekstra adım hakkı kazandı!</color>");
+
+        // Action Phase'i bitirme, direkt Move Phase'e geri dön
+        TurnManager.Instance.cardOrRingTurnPlayed = false;
+        TurnManager.Instance.cardOrRingTurnPlayable = false;
+
+        bool isP1 = (owner == TurnManager.Instance.player1);
+        TurnManager.Instance.ForceExtraMovePhase(isP1);
     }
 
     // ============ KART 10: Karşıyı Rastgele Yere Işınla ============
@@ -325,10 +365,79 @@ public class CardEffectManager : MonoBehaviour
     // ============ KART 13: Kareyi Basılamaz Yap ============
     private IEnumerator Effect_BlockTile()
     {
-        // TODO: Oyuncuya kare seçtirme UI'ı eklenecek
-        Debug.Log("<color=red>[KART 13] Kare engelleme - henüz kare seçim UI'ı yok.</color>");
-        yield return null;
+        isSelectingTileToBlock = true;
+        waitingForTileSelection = true;
+        Debug.Log("<color=yellow>[KART 13] Engellemek istediğin kareyi ok tuşlarıyla seç ve Space'e bas!</color>");
+
+        // Cursor'ı aktif oyuncunun pozisyonuna getir
+        blockCursorRing = TurnManager.Instance.activePlayer.currentRing;
+        blockCursorSlice = TurnManager.Instance.activePlayer.currentSlice;
+        UpdateBlockCursor();
+
+        yield return new WaitUntil(() => !waitingForTileSelection);
+
         TurnManager.Instance.cardOrRingTurnPlayed = true;
+    }
+
+    private int blockCursorRing;
+    private int blockCursorSlice;
+    private TileData blockHighlightedTile;
+
+    void Update()
+    {
+        if (!isSelectingTileToBlock) return;
+
+        bool invertControls = TurnManager.Instance.invertControls;
+        KeyCode upKey = invertControls ? KeyCode.DownArrow : KeyCode.UpArrow;
+        KeyCode downKey = invertControls ? KeyCode.UpArrow : KeyCode.DownArrow;
+        KeyCode rightKey = invertControls ? KeyCode.LeftArrow : KeyCode.RightArrow;
+        KeyCode leftKey = invertControls ? KeyCode.RightArrow : KeyCode.LeftArrow;
+
+        bool moved = false;
+
+        if (Input.GetKeyDown(upKey) && blockCursorRing < GridManager.Instance.totalRings - 1) { blockCursorRing++; moved = true; }
+        if (Input.GetKeyDown(downKey) && blockCursorRing > 0) { blockCursorRing--; moved = true; }
+        if (Input.GetKeyDown(rightKey)) { blockCursorSlice = (blockCursorSlice + 1) % GridManager.Instance.totalSlices; moved = true; }
+        if (Input.GetKeyDown(leftKey)) { blockCursorSlice = (blockCursorSlice - 1 + GridManager.Instance.totalSlices) % GridManager.Instance.totalSlices; moved = true; }
+
+        if (moved) UpdateBlockCursor();
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            ConfirmBlockTile();
+        }
+    }
+
+    void UpdateBlockCursor()
+    {
+        // Önceki cursor'ı kapat
+        if (blockHighlightedTile != null && blockHighlightedTile.tileTransform.childCount > 0)
+            blockHighlightedTile.tileTransform.GetChild(0).gameObject.SetActive(false);
+
+        blockHighlightedTile = GridManager.Instance.GetTile(blockCursorRing, blockCursorSlice);
+
+        if (blockHighlightedTile != null && blockHighlightedTile.tileTransform.childCount > 0)
+            blockHighlightedTile.tileTransform.GetChild(0).gameObject.SetActive(true);
+    }
+
+    void ConfirmBlockTile()
+    {
+        // Cursor'ı kapat
+        if (blockHighlightedTile != null && blockHighlightedTile.tileTransform.childCount > 0)
+            blockHighlightedTile.tileTransform.GetChild(0).gameObject.SetActive(false);
+
+        TileData tile = GridManager.Instance.GetTile(blockCursorRing, blockCursorSlice);
+        tile.isBlocked = true;
+
+        // Kareyi siyaha boya
+        SpriteRenderer sr = tile.tileTransform.GetComponent<SpriteRenderer>();
+        if (sr != null)
+            sr.color = Color.black;
+
+        Debug.Log($"<color=red>[KART 13] Kare engellendi: Ring {blockCursorRing}, Slice {blockCursorSlice}</color>");
+
+        isSelectingTileToBlock = false;
+        waitingForTileSelection = false;
     }
 
     // ============ YARDIMCI METODLAR ============

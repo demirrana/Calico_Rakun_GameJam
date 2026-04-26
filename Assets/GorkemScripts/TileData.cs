@@ -13,6 +13,8 @@ public class TileData
     public TrapType trapType = TrapType.None;
 
     public GameObject trapElement;
+
+    public bool isBlocked = false;
 }
 
 public enum TrapType { None, Mine, Piston, Teleport }

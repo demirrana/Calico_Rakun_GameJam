@@ -85,6 +85,10 @@ public class CardManager : MonoBehaviour
     {
         OnCardChosen?.Invoke(sender, new CardEventArgs.ChooseCardEventArgs(isPlayer1sTurn, card));
     }
+    public List<Card> GetPlayerCards(bool isPlayer1)
+    {
+        return isPlayer1 ? player1Cards : player2Cards;
+    }
 
     private void Awake()
     {

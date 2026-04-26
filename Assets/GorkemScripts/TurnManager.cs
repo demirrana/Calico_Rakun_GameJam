@@ -113,10 +113,24 @@ public class TurnManager : MonoBehaviour
                 break;
             case GameState.Player1_MovePhase:
                 ChangeActivePlayer(player1);
+                if (player1.skipNextMove)
+                {
+                    Debug.Log($"<color=red>{player1.playerName} bu tur hareket edemez! Pas geçiliyor.</color>");
+                    player1.skipNextMove = false;
+                    ChangeState(GameState.Player1_ActionPhase);
+                    return;
+                }
                 SnapCursorToPlayer(activePlayer);
                 break;
             case GameState.Player2_MovePhase:
                 ChangeActivePlayer(player2);
+                if (player2.skipNextMove)
+                {
+                    Debug.Log($"<color=red>{player2.playerName} bu tur hareket edemez! Pas geçiliyor.</color>");
+                    player2.skipNextMove = false;
+                    ChangeState(GameState.Player2_ActionPhase);
+                    return;
+                }
                 SnapCursorToPlayer(activePlayer);
                 break;
             case GameState.Player1_ActionPhase:
@@ -167,18 +181,39 @@ public class TurnManager : MonoBehaviour
             CardManager.Instance.ToggleCardHoversOfPlayers();
         }
     }
+    public void ForceExtraMovePhase(bool isPlayer1)
+    {
+        Debug.Log($"<color=green>[KART 9] Ekstra hareket fazı başlıyor!</color>");
+
+        if (isPlayer1)
+        {
+            currentState = GameState.Player1_MovePhase;
+            activePlayer = player1;
+        }
+        else
+        {
+            currentState = GameState.Player2_MovePhase;
+            activePlayer = player2;
+        }
+
+        SnapCursorToPlayer(activePlayer);
+    }
 
     void ConfirmMoveSelection()
     {
-        // Oyuncu zaten olduğu yeri tekrar seçerse hiçbir şey yapma
         if (cursorRing == activePlayer.currentRing && cursorSlice == activePlayer.currentSlice) return;
 
         TileData targetTile = GridManager.Instance.GetTile(cursorRing, cursorSlice);
 
-        // Sistemi kitle ve hareketi başlat
+        // Engelli kare kontrolü
+        if (targetTile.isBlocked)
+        {
+            Debug.Log("<color=red>Bu kare engellenmiş, üzerine basılamaz!</color>");
+            return;
+        }
+
         isProcessingMovementOrTraps = true;
         HideCursor();
-
         activePlayer.MoveTo(cursorRing, cursorSlice, targetTile.tileTransform, EvaluateCurrentPlayerTile);
     }
 
@@ -214,6 +249,16 @@ public class TurnManager : MonoBehaviour
 
         // 3. GÜVENLİ ALAN (None)
         isProcessingMovementOrTraps = false;
+
+        // // Ekstra adım kontrolü (Kart 9)
+        // if (activePlayer.extraSteps > 0)
+        // {
+        //     activePlayer.extraSteps--;
+        //     Debug.Log($"<color=green>[KART 9] {activePlayer.playerName} ekstra adım atıyor! Kalan: {activePlayer.extraSteps}</color>");
+        //     SnapCursorToPlayer(activePlayer);
+        //     // Aynı fazda kal, tekrar hareket etsin
+        //     return;
+        // }
 
         if (currentState == GameState.Player1_MovePhase)
             ChangeState(GameState.Player1_ActionPhase);

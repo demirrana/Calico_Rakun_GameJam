@@ -22,7 +22,7 @@ public class PlayerController : MonoBehaviour
     [Header("Kart Efektleri")]
     [HideInInspector] public bool skipNextMove = false;
     [HideInInspector] public bool cardBlocked = false;
-    [HideInInspector] public int extraSteps = 0;
+
 
     // Pozisyon geçmişi (Kart 8 için)
     private List<Vector2Int> positionHistory = new List<Vector2Int>();
