@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -36,10 +37,22 @@ public class CardHover : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
     {
         if (!isReady) return;
 
+        Card card = this.gameObject.GetComponent<Card>();
+        bool isPlayer1sTurn = CardManager.Instance.isPlayer1sTurn;
+        bool doesHolderBelongToPlayer1 = card.transform.parent == CardManager.Instance.GetPlayer1CardHolder();
+
+        if ((isPlayer1sTurn && !doesHolderBelongToPlayer1) || (!isPlayer1sTurn && doesHolderBelongToPlayer1))
+        {
+            return;
+        }
+
         if (eventData.button == PointerEventData.InputButton.Left)
         {
-            Card card = GetComponent<Card>();
             CardManager.Instance.RaiseCardChosen(this, card);
+            if (TurnManager.Instance.cardOrRingTurnPlayable)
+            {
+                CardManager.Instance.RemoveCardAndReorganize(card);
+            }
         }
     }
 

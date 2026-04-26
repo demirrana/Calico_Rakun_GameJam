@@ -144,14 +144,14 @@ public class CardManager : MonoBehaviour
         }
     }
 
-    private void DetectDealingCards() //consider deleting other player's cards
+    public IEnumerator DetectDealingCards() //consider deleting other player's cards
     {
         if (isPlayer1sTurn) //player 1's turn
         {
             if (player1CardsData.Count <= minCardCount)
             {
-                DealCards(player1Cards, player1CardsData, maxCardCount - player1Cards.Count);
-
+                Debug.Log("player 1'in az karti var");
+                yield return StartCoroutine(DealCards(player1Cards, player1CardsData, maxCardCount - player1Cards.Count));
                 //increase or decrease cards
             }
         }
@@ -159,8 +159,8 @@ public class CardManager : MonoBehaviour
         {
             if (player2CardsData.Count <= minCardCount)
             {
-                DealCards(player2Cards, player2CardsData, maxCardCount - player2Cards.Count);
-
+                Debug.Log("player 2'nin az karti var");
+                yield return StartCoroutine(DealCards(player2Cards, player2CardsData, maxCardCount - player2Cards.Count));
                 //increase or decrease cards
             }
         }
@@ -169,7 +169,7 @@ public class CardManager : MonoBehaviour
     public void TriggerChangeActivePlayer(PlayerController activePlayer)
     {
         isPlayer1sTurn = activePlayer == TurnManager.Instance.player1 ? true : false;
-        DetectDealingCards(); //bunu da turnmanagerda endphase kismina atmam gerekebilir
+        StartCoroutine(DetectDealingCards()); //bunu da turnmanagerda endphase kismina atmam gerekebilir
     }
 
     public void SwapHoverRises()
@@ -296,17 +296,21 @@ public class CardManager : MonoBehaviour
 
         card.transform.SetParent(null, true);
 
+        // Hangi liste ve holder?
+        List<Card> currentList = isPlayer1sTurn ? player1Cards : player2Cards;
+
         Transform currentHolder = isPlayer1sTurn ? player1CardHolder : player2CardHolder;
         
-        int currentIndex = isPlayer1sTurn ? p1Index : p2Index;
-        
-        float xPos = startX + (currentIndex * cardSpacing); 
+        int myIndex = currentList.IndexOf(card);
+
+        if(myIndex == -1) {
+            Debug.LogError($"{card.name} listede bulunamadi!");
+            yield break;
+        }
+
+        float xPos = startX + (myIndex * cardSpacing); 
         float yPos = currentHolder.position.y; 
         Vector3 targetWorldPos = new Vector3(xPos, yPos, 0);
-
-        if (isPlayer1sTurn) p1Index++; else p2Index++;
-
-        Debug.Log($"{card.name} için hedef: {targetWorldPos} (Sıra: {currentIndex})");
 
         float timer = 0f;
         float duration = 0.5f; 
@@ -323,7 +327,47 @@ public class CardManager : MonoBehaviour
         card.transform.position = targetWorldPos;
         card.transform.SetParent(currentHolder, true);
 
-        card.transform.position = targetWorldPos;
+        if(card.TryGetComponent<CardHover>(out var hover))
+        {
+            hover.Activate(card.transform.localPosition);
+        }
+    }
+
+    public void RemoveCardAndReorganize(Card card)
+    {
+        bool isP1 = card.transform.parent == player1CardHolder;
+        List<Card> currentList = isP1 ? player1Cards : player2Cards;
+
+        currentList.Remove(card);
+
+        for (int i = 0; i < currentList.Count; i++)
+        {
+            float newX = startX + (i * cardSpacing);
+            // Kartın holder içindeki yeni local pozisyonu
+            Vector3 targetLocalPos = new Vector3(newX, 0, 0); 
+            
+            StartCoroutine(SmoothSlide(currentList[i], targetLocalPos));
+        }
+    }
+
+    private IEnumerator SmoothSlide(Card card, Vector3 targetLocalPos)
+    {
+        float t = 0;
+        float duration = 0.3f;
+        Vector3 startLocal = card.transform.localPosition;
+
+        while (t < duration)
+        {
+            t += Time.deltaTime;
+            card.transform.localPosition = Vector3.Lerp(startLocal, targetLocalPos, t / duration);
+            yield return null;
+        }
+        card.transform.localPosition = targetLocalPos;
+
+        if(card.TryGetComponent<CardHover>(out var hover))
+        {
+            hover.Activate(targetLocalPos);
+        }
     }
 
     private void ActivateHoverEffect(bool isPlayer1sTurn)
@@ -367,5 +411,15 @@ public class CardManager : MonoBehaviour
             CardHover cardHover = card.GetComponent<CardHover>();
             cardHover.enabled = !cardHover.enabled;
         }
+    }
+
+    public Transform GetPlayer1CardHolder()
+    {
+        return player1CardHolder;
+    }
+
+    public Transform GetPlayer2CardHolder()
+    {
+        return player2CardHolder;
     }
 }
