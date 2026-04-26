@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SO_Card
   cardType: 1
   frontFace: {fileID: 21300000, guid: 2de75f641500be747b7a5bb6c63e78e0, type: 3}
+  hintText: "Hazinen bulunmad\u0131\u011F\u0131 3 kareyi g\xF6sterir."

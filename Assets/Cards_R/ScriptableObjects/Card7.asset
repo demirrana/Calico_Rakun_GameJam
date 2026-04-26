@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SO_Card
   cardType: 6
   frontFace: {fileID: 21300000, guid: 548b7ab20e5a8d84e986df362a9272a3, type: 3}
+  hintText: "Rakibinin se\xE7ti\u011Fin kart\u0131n\u0131 yakars\u0131n."

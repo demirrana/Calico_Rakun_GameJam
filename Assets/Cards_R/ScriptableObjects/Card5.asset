@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SO_Card
   cardType: 4
   frontFace: {fileID: 21300000, guid: 757509fc98bfdef448b99bf8a7708e88, type: 3}
+  hintText: "Rakibin ad\u0131m atamaz."

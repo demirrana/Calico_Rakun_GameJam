@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SO_Card
   cardType: 7
   frontFace: {fileID: 21300000, guid: d2945c325e1b4194295d383c46e2b963, type: 3}
+  hintText: "Rakibini 2 ad\u0131m geri g\xF6nderir."

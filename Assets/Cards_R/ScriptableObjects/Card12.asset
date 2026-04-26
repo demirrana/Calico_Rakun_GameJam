@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SO_Card
   cardType: 11
   frontFace: {fileID: 21300000, guid: 750f470bdac60aa40896b34a5b66d752, type: 3}
+  hintText: "Rakibinin bir tur kart kullanmas\u0131n\u0131 engellersin."

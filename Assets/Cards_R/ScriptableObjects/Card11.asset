@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SO_Card
   cardType: 10
   frontFace: {fileID: 21300000, guid: f6c70bff0c2aeca45ac096ce2a63c241, type: 3}
+  hintText: "Rakibinle yer de\u011Fi\u015Ftirirsin."

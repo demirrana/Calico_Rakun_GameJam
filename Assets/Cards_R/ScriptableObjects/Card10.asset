@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SO_Card
   cardType: 9
   frontFace: {fileID: 21300000, guid: 68b713fe193a325408c11c33699ad7a6, type: 3}
+  hintText: "Rakibini rastgele \u0131\u015F\u0131nlars\u0131n"

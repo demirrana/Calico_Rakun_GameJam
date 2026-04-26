@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SO_Card
   cardType: 5
   frontFace: {fileID: 21300000, guid: 99cf9f9b34685cb46ac9cf4bf08e0189, type: 3}
+  hintText: "Hazine say\u0131s\u0131 2'ye \xE7\u0131kar."

@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SO_Card
   cardType: 8
   frontFace: {fileID: 21300000, guid: f6d48986f9ee96b4fb5c5e3db9d8b1da, type: 3}
+  hintText: "Ekstra bir ad\u0131m atars\u0131n"

@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SO_Card
   cardType: 2
   frontFace: {fileID: 21300000, guid: 572a82fad821b184f84e1881fd4fb840, type: 3}
+  hintText: "Turn'u geri al\u0131r."

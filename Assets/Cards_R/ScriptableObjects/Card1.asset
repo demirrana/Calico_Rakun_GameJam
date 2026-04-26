@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SO_Card
   cardType: 0
   frontFace: {fileID: 21300000, guid: ef10c23e0ca256e43a84d75ca3b5d911, type: 3}
+  hintText: "Hazinen bulunma ihtimali olan 3 kareyi g\xF6sterir."

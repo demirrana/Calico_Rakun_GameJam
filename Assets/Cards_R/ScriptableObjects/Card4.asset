@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SO_Card
   cardType: 3
   frontFace: {fileID: 21300000, guid: abe309a52fbbd6c49b0db9d6d9d09477, type: 3}
+  hintText: "Hazinenin konumunu de\u011Fi\u015Ftir."

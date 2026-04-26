@@ -32,11 +32,10 @@ public class CardHover : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
         transform.localScale = Vector3.Lerp(transform.localScale, targetScale, Time.deltaTime * animSpeed);
     }
 
-    public void OnPointerClick(PointerEventData eventData) //Trigger event OnCardChosen in CardManager script
+    public void OnPointerClick(PointerEventData eventData) 
     {
         if (!isReady) return;
 
-        // Sol tık kontrolü (istersen sağ tıkı da ayırabilirsin)
         if (eventData.button == PointerEventData.InputButton.Left)
         {
             Card card = GetComponent<Card>();
@@ -46,6 +45,10 @@ public class CardHover : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
 
     public void OnPointerEnter(PointerEventData eventData)
     {
+        CardManager.Instance.hintObject.SetActive(true);
+        CardManager.Instance.hintObject.GetComponent<Animator>().SetTrigger("menuOpen");
+        CardManager.Instance.hintText.text = GetComponent<Card>().GetCardData().hintText;
+        CardManager.Instance.hoveredImage.sprite = GetComponent<Card>().GetShownFace();
         if (!isReady) return;
         targetPos = originalPos + new Vector3(0, hoverRise, 0);
         targetScale = originalScale * hoverScale;
@@ -59,6 +62,7 @@ public class CardHover : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
 
     public void OnPointerExit(PointerEventData eventData)
     {
+        CardManager.Instance.hintObject.GetComponent<Animator>().SetTrigger("menuClose");
         if (!isReady) return;
         targetPos = originalPos;
         targetScale = originalScale;

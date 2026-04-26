@@ -5,7 +5,7 @@ using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
-
+using TMPro;
 public class CardManager : MonoBehaviour
 {
     public static CardManager Instance { get; private set; }
@@ -77,6 +77,10 @@ public class CardManager : MonoBehaviour
 
     private Button button1;
     private Button button2;
+
+    public GameObject hintObject;
+    public TextMeshProUGUI hintText;
+    public Image hoveredImage;
     public void RaiseCardChosen(object sender, Card card)
     {
         OnCardChosen?.Invoke(sender, new CardEventArgs.ChooseCardEventArgs(isPlayer1sTurn, card));
@@ -261,7 +265,7 @@ public class CardManager : MonoBehaviour
 
     private IEnumerator FlipCard(Card card, Sprite frontSprite)
     {
-        float duration = 0.15f; //half of flip time
+        float duration = 0.10f; //half of flip time
         Vector3 originalScale = card.transform.localScale;
 
         float timer = 0; //narrow the card down
@@ -305,7 +309,7 @@ public class CardManager : MonoBehaviour
         Debug.Log($"{card.name} için hedef: {targetWorldPos} (Sıra: {currentIndex})");
 
         float timer = 0f;
-        float duration = 0.7f; 
+        float duration = 0.5f; 
         Vector3 startWorldPos = card.transform.position;
 
         while (timer < duration)

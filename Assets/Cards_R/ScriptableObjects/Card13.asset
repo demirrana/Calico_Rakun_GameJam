@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SO_Card
   cardType: 12
   frontFace: {fileID: 21300000, guid: 025546dd13e929a4ba9b690268ddde92, type: 3}
+  hintText: "Bir kareyi bloklars\u0131n, \xFCst\xFCne gelinemez."
