@@ -60,14 +60,14 @@ public class TurnManager : MonoBehaviour
     {
         // YENİ: Kamera dönerken veya tuzaklar çalışırken girdi almayı engelle
         if (isProcessingMovementOrTraps || isCameraMoving) return;
-        // DEBUG: W tuşuna bas, anında kazan
-        if (Input.GetKeyDown(KeyCode.W))
-        {
-            Debug.Log("<color=green>[DEBUG] Zorla kazanma tetiklendi!</color>");
-            TileData currentTile = GridManager.Instance.GetTile(activePlayer.currentRing, activePlayer.currentSlice);
-            currentTile.hasTreasure = true;
-            EvaluateCurrentPlayerTile();
-        }
+        // // DEBUG: W tuşuna bas, anında kazan
+        // if (Input.GetKeyDown(KeyCode.W))
+        // {
+        //     Debug.Log("<color=green>[DEBUG] Zorla kazanma tetiklendi!</color>");
+        //     TileData currentTile = GridManager.Instance.GetTile(activePlayer.currentRing, activePlayer.currentSlice);
+        //     currentTile.hasTreasure = true;
+        //     EvaluateCurrentPlayerTile();
+        // }
         switch (currentState)
         {
             case GameState.Setup_Player1:
