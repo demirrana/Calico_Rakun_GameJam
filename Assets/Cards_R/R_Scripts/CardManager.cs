@@ -245,6 +245,15 @@ public class CardManager : MonoBehaviour
         }
     }
 
+    private void CheckOtherCardsHoverRise(Transform playerHolder, CardHover cardHover)
+    {
+        CardHover firstCardHover = playerHolder.GetChild(0).GetComponent<CardHover>();
+        if (playerHolder.childCount > 0 && cardHover != firstCardHover)
+        {
+            cardHover.hoverRise = firstCardHover.hoverRise;
+        }
+    }
+
     private void DeleteMandatoryCards() //WARNING: mandatory card list is getting changed here
     {
         List<int> toBeDeletedIndexes = mandatoryCardIndexes.Distinct().OrderByDescending(x => x).ToList();
@@ -334,6 +343,9 @@ public class CardManager : MonoBehaviour
         if(card.TryGetComponent<CardHover>(out var hover))
         {
             hover.Activate(card.transform.localPosition);
+            CardHover newCardHover = card.GetComponent<CardHover>();//or after activating
+            if (card.gameObject.transform.parent == player1CardHolder)      CheckOtherCardsHoverRise(player1CardHolder, newCardHover);
+            else if (card.gameObject.transform.parent == player2CardHolder)      CheckOtherCardsHoverRise(player2CardHolder, newCardHover);
         }
     }
 
