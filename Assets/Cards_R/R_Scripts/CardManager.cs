@@ -79,15 +79,12 @@ public class CardManager : MonoBehaviour
     private Button button2;
     public void RaiseCardChosen(object sender, Card card)
     {
-        Debug.Log("Card " + card.name + " is triggered");
         OnCardChosen?.Invoke(sender, new CardEventArgs.ChooseCardEventArgs(isPlayer1sTurn, card));
     }
 
     private void Awake()
     {
         SetSingleton();
-        button1 = CameraManager.Instance.button1;
-        button2 = CameraManager.Instance.button2;
     }
 
     private void SetSingleton()
@@ -101,6 +98,8 @@ public class CardManager : MonoBehaviour
 
     private void Start()
     {
+        button1 = CameraManager.Instance.button1;
+        button2 = CameraManager.Instance.button2;
         button1.interactable = false;
         button2.interactable = false;
         StartCoroutine(SetupGameRoutine());
@@ -113,6 +112,7 @@ public class CardManager : MonoBehaviour
         isPlayer1sTurn = false;
         yield return StartCoroutine(DealInitialCards(player2Cards, player2CardsData, mandatoryCardIndexes.Count));
         ToggleCardHoverOfPlayer(player2Cards);
+        SetPlayer2HoverRise();
         DeleteMandatoryCards(); //some cards are given to player only at start, so delete them for random card deal
         isPlayer1sTurn = true;
         isStartOfGame = false;
@@ -122,13 +122,12 @@ public class CardManager : MonoBehaviour
         button2.interactable = true;
     }
 
-    private void SetPlayer1HoverRise()
+    private void SetPlayer2HoverRise()
     {
-        Debug.Log("SetPlayer1HoverRise");
-        foreach (Card card in player1Cards)
+        Debug.Log("SetPlayer2HoverRise");
+        foreach (Card card in player2Cards)
         {
             CardHover cardHover = card.GetComponent<CardHover>();
-            Debug.Log(cardHover.hoverRise);
             cardHover.ChangeHoverRise();
         }
     }
@@ -166,11 +165,10 @@ public class CardManager : MonoBehaviour
     public void TriggerChangeActivePlayer(PlayerController activePlayer)
     {
         isPlayer1sTurn = activePlayer == TurnManager.Instance.player1 ? true : false;
-        DetectDealingCards();
-        SwapHoverRises();
+        DetectDealingCards(); //bunu da turnmanagerda endphase kismina atmam gerekebilir
     }
 
-    private void SwapHoverRises()
+    public void SwapHoverRises()
     {
         Debug.Log("SwapHoverRise");
         foreach (Card card in player1Cards)
@@ -220,8 +218,6 @@ public class CardManager : MonoBehaviour
 
             yield return StartCoroutine(AnimateCardDealing(isPlayer1sTurn, lastDrawnCard));
         }
-        Debug.Log("list after dealt cards: ");
-        LogList(playerCards);
         ActivateHoverEffect(isPlayer1sTurn);
     }
 

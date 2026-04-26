@@ -208,6 +208,8 @@ public class TurnManager : MonoBehaviour
             ChangeState(GameState.Player1_MovePhase);
             if (CameraManager.Instance != null) CameraManager.Instance.SwitchTurnView(true);
         }
+        
+        //CardManager.Instance.SwapHoverRises();
     }
 
     // --- CURSOR (İMLEÇ) SİSTEMİ (İNVERT KONTROL EKLENDİ) ---

@@ -14,6 +14,12 @@ public class Card : MonoBehaviour
         cardAnimator = GetComponent<Animator>();
     }
 
+    void LateUpdate()
+    {
+        transform.LookAt(transform.position + Camera.main.transform.rotation * Vector3.forward, 
+                     Camera.main.transform.rotation * Vector3.up);
+    }
+
     public Card(SO_Card cardData, bool belongsToPlayer1)
     {
         this.cardData = cardData;
