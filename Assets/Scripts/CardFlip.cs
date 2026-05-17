@@ -13,8 +13,12 @@ public class CardFlip : MonoBehaviour
     public float flipDuration = 0.4f;
 
     [Header("Fullscreen Settings")]
-    public bool goFullscreen = false;       // Inspector'dan aç/kapa
+    public bool goFullscreen = false;
     public float expandDuration = 0.5f;
+    public float fullscreenYOffset = 50f;
+    public float targetWidth = 800f;    // İstediğin genişlik
+    public float targetHeight = 1000f;  // İstediğin yükseklik
+
 
     private Image cardImage;
     private TextMeshProUGUI cardText;
@@ -108,10 +112,7 @@ public class CardFlip : MonoBehaviour
         Vector3 startPos = rectTransform.localPosition;
         Vector2 startSize = rectTransform.sizeDelta;
 
-        // Canvas boyutunu al
-        Canvas canvas = GetComponentInParent<Canvas>();
-        RectTransform canvasRect = canvas.GetComponent<RectTransform>();
-        Vector2 targetSize = canvasRect.sizeDelta;
+        Vector2 targetSize = new Vector2(targetWidth, targetHeight);
 
         while (elapsed < expandDuration)
         {

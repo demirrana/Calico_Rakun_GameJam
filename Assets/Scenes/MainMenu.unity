@@ -175,6 +175,9 @@ MonoBehaviour:
   flipDuration: 0.4
   goFullscreen: 0
   expandDuration: 0.5
+  fullscreenYOffset: 50
+  targetWidth: 800
+  targetHeight: 1000
 --- !u!114 &11568905
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1519,10 +1522,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CardFlip
   frontSprite: {fileID: 0}
-  backSprite: {fileID: 453910332340128400, guid: 77a0eab616317b0428f23fb4e1bb6b81, type: 3}
+  backSprite: {fileID: -8581257183671146071, guid: 54171bc946098bd40a3b10f6a96d331a, type: 3}
   flipDuration: 0.4
   goFullscreen: 1
   expandDuration: 0.5
+  fullscreenYOffset: 50
+  targetWidth: 1080
+  targetHeight: 720
 --- !u!114 &1990707803
 MonoBehaviour:
   m_ObjectHideFlags: 0

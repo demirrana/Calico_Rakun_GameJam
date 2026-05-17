@@ -230,6 +230,7 @@ public class TurnManager : MonoBehaviour
             bool isP1 = (activePlayer == player1);
             winImage.sprite = isP1 ? player1WinSprite : player2WinSprite;
             winPanel.SetActive(true);
+            AudioManager.Instance.PlayOneShotSFX("Victory");
             winPanel.transform.SetAsLastSibling();
 
             isProcessingMovementOrTraps = false;

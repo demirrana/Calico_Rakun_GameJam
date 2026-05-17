@@ -932,6 +932,9 @@ MonoBehaviour:
   - name: teleport
     clip: {fileID: 8300000, guid: 7609b16cc6558c24ca801b6c6edfb5fb, type: 3}
     volume: 1
+  - name: Victory
+    clip: {fileID: 8300000, guid: 7a433f3745bf55f46ae7daa2ec59bfe6, type: 3}
+    volume: 1
   loopedSfxSounds: []
   musicFadeDuration: 0.5
   loopedSfxFadeDuration: 0.5
